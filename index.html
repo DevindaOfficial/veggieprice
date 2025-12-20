@@ -685,16 +685,16 @@
             </section>
 
             <!-- Market Selection Grid (compact, professional) -->
-            <div id="markets" class="bg-green-50/50 py-10">
-                <div class="container mx-auto px-6 pl-4 md:pl-12">
-                    <div class="flex items-center justify-between mb-6">
+            <div id="markets" class="bg-green-50/50 py-4 md:py-10">
+                <div class="container mx-auto px-4 sm:px-6 pl-4 md:pl-12">
+                    <div class="flex items-center justify-between mb-4">
                         <div>
-                            <h3 class="text-2xl md:text-3xl font-bold text-gray-800" data-i18n="select_market">Select a Market</h3>
+                            <h3 class="text-xl md:text-3xl font-bold text-gray-800" data-i18n="select_market">Select a Market</h3>
                             <p class="text-gray-600 mt-1 text-sm max-w-xl" data-i18n="market_subtitle">Choose a location to view detailed price lists.</p>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="market-grid">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6" id="market-grid">
                         <!-- Market Cards injected by JS -->
                     </div>
                 </div>
@@ -1505,20 +1505,20 @@
                     const btnText = translations[app.currentLang].view_prices;
 
                     return `
-                    <div onclick="app.showMarket('${m.id}')" class="group bg-white rounded-xl shadow border border-gray-100 overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1 relative z-20">
-                        <div class="relative h-36 md:h-44 overflow-hidden">
-                            <img src="${m.image}" alt="${name}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/400x300?text=Market'">
+                    <div onclick="app.showMarket('${m.id}')" class="group bg-white rounded-md md:rounded-lg shadow border border-gray-100 overflow-hidden cursor-pointer transition-all duration-200 hover:-translate-y-0.5 relative z-20 market-card">
+                        <div class="relative h-16 md:h-28 lg:h-32 overflow-hidden">
+                            <img src="${m.image}" alt="${name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/400x300?text=Market'">
                             <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent opacity-70"></div>
-                            <div class="absolute bottom-4 left-4 text-white">
-                                <h3 class="text-lg md:text-xl font-semibold tracking-tight drop-shadow-sm">${name}</h3>
-                                <p class="text-xs text-gray-100 flex items-center mt-2 font-medium bg-white/10 inline-flex px-2 py-0.5 rounded-md">
+                            <div class="absolute bottom-1 left-3 text-white">
+                                <h3 class="text-xs md:text-base font-semibold tracking-tight drop-shadow-sm">${name}</h3>
+                                <p class="text-[11px] text-gray-100 flex items-center mt-1 font-medium bg-white/10 inline-flex px-2 py-0.5 rounded-md">
                                     <i class="fa-solid fa-location-dot mr-1 text-orange-400"></i> ${loc}
                                 </p>
                             </div>
                         </div>
-                        <div class="p-3 md:p-4 flex justify-between items-center bg-white border-t border-gray-50">
+                        <div class="p-1 md:p-2 flex justify-between items-center bg-white border-t border-gray-50">
                             <span class="text-sm font-semibold text-gray-600 group-hover:text-green-600 transition-colors">${btnText} →</span>
-                            <div class="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                            <div class="w-7 h-7 rounded-full bg-green-50 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
                                 <i class="fa-solid fa-folder-open text-green-600 group-hover:text-white transition text-sm"></i>
                             </div>
                         </div>
