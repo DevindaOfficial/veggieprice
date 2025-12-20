@@ -1661,7 +1661,7 @@
                     const btnText = translations[app.currentLang].view_prices;
 
                     return `
-                            <div onclick="app.showMarket('${m.id}')" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 md:border-0 md:shadow-2xl cursor-pointer transition transform duration-300 hover:scale-105 market-card h-auto md:h-[420px] flex flex-col self-start w-full">
+                            <div onclick="app.showMarket('${m.id}')" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-auto md:h-[420px] flex flex-col self-start w-full">
                         <div class="h-28 md:h-[210px] overflow-hidden flex items-center justify-center">
   <img
     src="${m.image}" 
