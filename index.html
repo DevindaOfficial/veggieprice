@@ -20,7 +20,7 @@
         rel="stylesheet">
 
     <!-- Replace bucket-like favicon with a neutral inline SVG favicon to avoid emoji-like icon on minimize -->
-       <link rel="icon" type="image/png" href="assets\imgs\favicon (3).png">
+    <link rel="icon" type="image/png" href="assets\imgs\favicon (3).png">
 
     <style>
         body {
@@ -389,50 +389,183 @@
         }
 
         /* Emoji Nav Button Styles */
-        #emoji-toggle-nav-btn { border: none; padding: 0; width:40px; height:40px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-        #emoji-toggle-nav-btn .carrot-emoji { font-size: 1.15rem; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:9999px; }
-        #emoji-toggle-nav-btn.active .carrot-emoji { animation: pulse 1.2s infinite ease-in-out; transform-origin:center; }
-        #emoji-toggle-nav-btn.pressed { transform: translateY(1px) scale(0.98); box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; }
+        #emoji-toggle-nav-btn {
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #emoji-toggle-nav-btn .carrot-emoji {
+            font-size: 1.15rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 9999px;
+        }
+
+        #emoji-toggle-nav-btn.active .carrot-emoji {
+            animation: pulse 1.2s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        #emoji-toggle-nav-btn.pressed {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        }
 
         /* Ripple element */
-        .emoji-ripple { position:absolute; width:8px; height:8px; border-radius:9999px; transform: translate(-50%, -50%) scale(0); background: rgba(0,0,0,0.08); pointer-events:none; opacity:0.9; }
-        @keyframes ripple { to { transform: translate(-50%, -50%) scale(10); opacity:0; } }
-        .emoji-ripple.animate { animation: ripple 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .emoji-ripple {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 0, 0, 0.08);
+            pointer-events: none;
+            opacity: 0.9;
+        }
 
-        @keyframes pulse { 0%{transform:scale(1);}50%{transform:scale(1.08);}100%{transform:scale(1);} }
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(10);
+                opacity: 0;
+            }
+        }
+
+        .emoji-ripple.animate {
+            animation: ripple 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
 
         /* Mobile floating button (hidden on md+) */
-        #emoji-toggle-mobile { display:none; position:relative; overflow:hidden; }
-        #emoji-toggle-mobile.pressed { transform: translateY(1px) scale(0.98); }
+        #emoji-toggle-mobile {
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #emoji-toggle-mobile.pressed {
+            transform: translateY(1px) scale(0.98);
+        }
+
         /* Mobile nav emoji button (visible only on small screens) */
-        #emoji-toggle-nav-mobile { border: none; padding: 0; width:40px; height:40px; border-radius:9999px; display:inline-flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-        #emoji-toggle-nav-mobile .carrot-emoji { font-size: 1.15rem; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:9999px; }
+        #emoji-toggle-nav-mobile {
+            border: none;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #emoji-toggle-nav-mobile .carrot-emoji {
+            font-size: 1.15rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 9999px;
+        }
+
         /* Shared active/pulsing animation for mobile/desktop emoji buttons */
         #emoji-toggle-nav-mobile.active .carrot-emoji,
         #emoji-toggle-mobile.active .carrot-emoji,
-        #emoji-toggle-nav-btn.active .carrot-emoji { animation: pulse 1.2s infinite ease-in-out; transform-origin:center; }
-        #emoji-toggle-nav-mobile.pressed, #emoji-toggle-mobile.pressed { transform: translateY(1px) scale(0.98); box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; }
+        #emoji-toggle-nav-btn.active .carrot-emoji {
+            animation: pulse 1.2s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        #emoji-toggle-nav-mobile.pressed,
+        #emoji-toggle-mobile.pressed {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        }
 
         @media (max-width: 767px) {
-            #emoji-toggle-mobile { display:flex; }
-            #emoji-toggle-nav-btn { display:none; }
-            .produce-icon { font-size: 1.4rem; }
-            .falling-emoji, .boom-emoji { font-size: 22px; }
+            #emoji-toggle-mobile {
+                display: flex;
+            }
+
+            #emoji-toggle-nav-btn {
+                display: none;
+            }
+
+            .produce-icon {
+                font-size: 1.4rem;
+            }
+
+            .falling-emoji,
+            .boom-emoji {
+                font-size: 22px;
+            }
         }
 
         /* Falling and Boom emoji styles */
-        .falling-emoji, .boom-emoji { position: fixed; pointer-events: none; z-index: 60; font-size: 28px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12)); }
-        @keyframes fallDown {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
-        @keyframes boom {
-            0% { transform: scale(0.6) rotate(0deg); opacity: 1; }
-            40% { transform: scale(1.6) rotate(180deg); opacity: 1; }
-            100% { transform: scale(2) rotate(360deg); opacity: 0; }
+        .falling-emoji,
+        .boom-emoji {
+            position: fixed;
+            pointer-events: none;
+            z-index: 60;
+            font-size: 28px;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
         }
 
-    </style>  
+        @keyframes fallDown {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes boom {
+            0% {
+                transform: scale(0.6) rotate(0deg);
+                opacity: 1;
+            }
+
+            40% {
+                transform: scale(1.6) rotate(180deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <div id="loader">
     <div class="spinner"></div>
@@ -445,7 +578,8 @@
     <div id="floating-container"></div>
 
     <!-- Mobile Floating Emoji Button (visible on small screens) -->
-    <button id="emoji-toggle-mobile" aria-pressed="true" title="Emoji fun" onclick="emojiController.handleClick(event)" class="md:hidden fixed bottom-6 right-4 z-50 w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
+    <button id="emoji-toggle-mobile" aria-pressed="true" title="Emoji fun" onclick="emojiController.handleClick(event)"
+        class="md:hidden fixed bottom-6 right-4 z-50 w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
         <span class="text-2xl" aria-hidden="true">🥕</span>
     </button>
 
@@ -498,11 +632,12 @@
                         data-i18n="nav_markets">Markets</button>
                     <button onclick="app.toggleAbout()" class="hover:text-green-600 transition"
                         data-i18n="nav_about">About</button>
-                    <button id="emoji-toggle-nav-btn" aria-pressed="true" title="Emoji fun" onclick="emojiController.handleClick(event)"
+                    <button id="emoji-toggle-nav-btn" aria-pressed="true" title="Emoji fun"
+                        onclick="emojiController.handleClick(event)"
                         class="ml-2 rounded-full transition transform hover:scale-105 flex items-center justify-center text-sm"
                         style="width:40px;height:40px;background:#fff;border:0;padding:0;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
                         <span class="rounded-full bg-orange-100 p-2 carrot-emoji" aria-hidden="true">🥕</span>
-                    </button> 
+                    </button>
                 </div>
 
                 <button
@@ -526,7 +661,7 @@
             <button onclick="emojiController.handleClick(event); app.toggleMobileMenu()"
                 class="w-full text-left py-4 text-gray-600 hover:text-green-600 font-medium flex items-center gap-3">
                 <span class="bg-orange-100 p-2 rounded-full">🥕</span> Emoji Fun
-            </button> 
+            </button>
         </div>
     </nav>
 
@@ -629,7 +764,8 @@
                             <div class="flex items-center gap-3 mb-2">
                                 <div
                                     class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-arrow-up-right-dots text-xs"></i></div>
+                                    <i class="fa-solid fa-arrow-up-right-dots text-xs"></i>
+                                </div>
                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
                                     data-i18n="stat_highest">Highest</span>
                             </div>
@@ -644,7 +780,8 @@
                             <div class="flex items-center gap-3 mb-2">
                                 <div
                                     class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-arrow-down text-xs"></i></div>
+                                    <i class="fa-solid fa-arrow-down text-xs"></i>
+                                </div>
                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
                                     data-i18n="stat_dropped">Dropped</span>
                             </div>
@@ -658,7 +795,8 @@
                             <div class="flex items-center gap-3 mb-2">
                                 <div
                                     class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:scale-110 transition">
-                                    <i class="fa-solid fa-fire text-xs"></i></div>
+                                    <i class="fa-solid fa-fire text-xs"></i>
+                                </div>
                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
                                     data-i18n="stat_trending">Trending</span>
                             </div>
@@ -672,7 +810,8 @@
                             <div class="flex items-center gap-3 mb-2">
                                 <div
                                     class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 group-hover:scale-110 transition">
-                                    <i class="fa-regular fa-clock text-xs"></i></div>
+                                    <i class="fa-regular fa-clock text-xs"></i>
+                                </div>
                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
                                     data-i18n="stat_time">Time</span>
                             </div>
@@ -689,12 +828,15 @@
                 <div class="container mx-auto px-4 sm:px-6 pl-4 md:pl-12">
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <h3 class="text-xl md:text-3xl font-bold text-gray-800" data-i18n="select_market">Select a Market</h3>
-                            <p class="text-gray-600 mt-1 text-sm max-w-xl" data-i18n="market_subtitle">Choose a location to view detailed price lists.</p>
+                            <h3 class="text-xl md:text-3xl font-bold text-gray-800" data-i18n="select_market">Select a
+                                Market</h3>
+                            <p class="text-gray-600 mt-1 text-sm max-w-xl" data-i18n="market_subtitle">Choose a location
+                                to view detailed price lists.</p>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 items-start" id="market-grid">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 items-start"
+                        id="market-grid">
                         <!-- Market Cards injected by JS -->
                     </div>
                 </div>
@@ -861,39 +1003,54 @@
         <div class="container mx-auto px-6 pl-4 md:pl-24">
             <div class="max-w-4xl mx-auto text-center space-y-6">
                 <h3 class="text-3xl font-bold text-gray-900" data-i18n="why_title">Why use VeggiePrice?</h3>
-                <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="why_subtitle">Get reliable daily wholesale prices directly from major Sri Lankan markets, so farmers and buyers can make smarter decisions.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-i18n="why_subtitle">Get reliable daily wholesale prices
+                    directly from major Sri Lankan markets, so farmers and buyers can make smarter decisions.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
                     <div class="flex items-start gap-4">
-                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i class="fa-solid fa-check"></i></div>
+                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i
+                                class="fa-solid fa-check"></i></div>
                         <div>
-                            <p class="font-semibold text-gray-800" data-i18n="why_point_1">Daily verified updates from local markets</p>
-                            <p class="text-sm text-gray-500" data-i18n="why_point_1_sub">Sourced and checked for accuracy.</p>
+                            <p class="font-semibold text-gray-800" data-i18n="why_point_1">Daily verified updates from
+                                local markets</p>
+                            <p class="text-sm text-gray-500" data-i18n="why_point_1_sub">Sourced and checked for
+                                accuracy.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i
+                                class="fa-solid fa-chart-line"></i></div>
                         <div>
-                            <p class="font-semibold text-gray-800" data-i18n="why_point_2">Easy-to-read prices & trends</p>
-                            <p class="text-sm text-gray-500" data-i18n="why_point_2_sub">Quick snapshots to guide decisions.</p>
+                            <p class="font-semibold text-gray-800" data-i18n="why_point_2">Easy-to-read prices & trends
+                            </p>
+                            <p class="text-sm text-gray-500" data-i18n="why_point_2_sub">Quick snapshots to guide
+                                decisions.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i class="fa-solid fa-users"></i></div>
+                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i
+                                class="fa-solid fa-users"></i></div>
                         <div>
-                            <p class="font-semibold text-gray-800" data-i18n="why_point_3">Built for farmers & buyers</p>
-                            <p class="text-sm text-gray-500" data-i18n="why_point_3_sub">Practical tools designed locally.</p>
+                            <p class="font-semibold text-gray-800" data-i18n="why_point_3">Built for farmers & buyers
+                            </p>
+                            <p class="text-sm text-gray-500" data-i18n="why_point_3_sub">Practical tools designed
+                                locally.</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
-                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="bg-green-50 p-3 rounded-full text-green-600 text-xl"><i
+                                class="fa-solid fa-shield-halved"></i></div>
                         <div>
-                            <p class="font-semibold text-gray-800" data-i18n="why_point_4">Transparent and community-driven</p>
-                            <p class="text-sm text-gray-500" data-i18n="why_point_4_sub">Open and accountable data sharing.</p>
+                            <p class="font-semibold text-gray-800" data-i18n="why_point_4">Transparent and
+                                community-driven</p>
+                            <p class="text-sm text-gray-500" data-i18n="why_point_4_sub">Open and accountable data
+                                sharing.</p>
                         </div>
                     </div>
                 </div>
                 <div class="mt-6">
-                    <button onclick="app.scrollToSection('markets')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold shadow-sm transition" data-i18n="why_cta">Explore Markets</button>
+                    <button onclick="app.scrollToSection('markets')"
+                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold shadow-sm transition"
+                        data-i18n="why_cta">Explore Markets</button>
                 </div>
             </div>
         </div>
@@ -1505,9 +1662,14 @@
 
                     return `
                     <div onclick="app.showMarket('${m.id}')" class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl cursor-pointer transition transform duration-300 hover:scale-105 market-card h-80 md:h-96 lg:h-[420px] flex flex-col self-start">
-                        <div class="h-7/12 overflow-hidden">
-                            <img src="${m.image}" alt="${name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" onerror="this.src='https://placehold.co/400x300?text=Market'">
-                        </div>
+                        <div class="h-60 overflow-hidden flex items-center justify-center">
+  <img
+    src="${m.image}" 
+    alt="${name}" 
+     class="w-32 h-32 object-contain object-center transition-transform duration-300 group-hover:scale-105 mx-auto"
+    onerror="this.src='https://placehold.co/400x300?text=Market'"
+  >
+</div>
 
                         <div class="h-5/12 bg-white p-4 flex flex-col justify-between min-h-[88px]">
                             <div>
@@ -1892,11 +2054,11 @@
         });
 
         /* --- Android / Browser Back Integration (history-based SPA navigation) --- */
-        (function() {
+        (function () {
             const BACK_SELECTOR = 'button[onclick^="app.goHome"]';
 
             // Make sure we have a base 'home' state
-            try { history.replaceState({ app: 'veggie', view: 'home' }, '', location.pathname + location.search + location.hash); } catch (e) {}
+            try { history.replaceState({ app: 'veggie', view: 'home' }, '', location.pathname + location.search + location.hash); } catch (e) { }
 
             function pushViewState(view, data, url) {
                 const state = { app: 'veggie', view: view, data: data || {} };
@@ -1910,7 +2072,7 @@
             let suppressBackClick = false;
 
             // Intercept in-site back button clicks (e.g. app.goHome()) to use history.back()
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 const btn = e.target.closest(BACK_SELECTOR);
                 if (!btn) return;
                 if (suppressBackClick) { suppressBackClick = false; return; }
@@ -1919,7 +2081,7 @@
             }, { passive: false });
 
             // Map popstate entries to app behavior
-            window.addEventListener('popstate', function(e) {
+            window.addEventListener('popstate', function (e) {
                 const s = e.state;
                 if (!s || s.app !== 'veggie') return; // let browser handle non-app states (exit)
 
@@ -1965,5 +2127,3 @@
 </body>
 
 </html>
-
-
