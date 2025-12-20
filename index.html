@@ -1461,7 +1461,19 @@
 
             toggleAbout: () => {
                 const overlay = document.getElementById('about-overlay');
+                const wasHidden = overlay.classList.contains('hidden');
                 overlay.classList.toggle('hidden');
+                const isNowOpen = !overlay.classList.contains('hidden');
+                if (isNowOpen) {
+                    if (window.veggieHistory && typeof window.veggieHistory.pushViewState === 'function') {
+                        window.veggieHistory.pushViewState('about', {}, '#about');
+                    }
+                } else {
+                    // When user closes About via UI, pop the about history entry if present
+                    if (history.state && history.state.app === 'veggie' && history.state.view === 'about') {
+                        history.back();
+                    }
+                }
             },
 
             togglePastPrices: () => {
@@ -1508,6 +1520,10 @@
             showMarket: (marketId, isRestoring = false) => {
                 const market = markets.find(m => m.id === marketId);
                 if (!market) return;
+                // Push a history entry so Android / browser back navigates within the SPA
+                if (!isRestoring && window.veggieHistory && typeof window.veggieHistory.pushViewState === 'function') {
+                    window.veggieHistory.pushViewState('market', { id: marketId }, '#market/' + marketId);
+                }
 
                 // --- SMART SCROLL SAVING ---
                 // Only save home scroll if we are NOT restoring from a refresh (because restoring implies we handle scroll separately)
@@ -1626,6 +1642,10 @@
             },
 
             openModal: (imageSrc, marketName, dateStr) => {
+                // Push modal state so Android / browser back closes the modal
+                if (window.veggieHistory && typeof window.veggieHistory.pushViewState === 'function') {
+                    window.veggieHistory.pushViewState('modal', { type: 'image', src: imageSrc, marketName: marketName, dateStr: dateStr }, '#modal/image');
+                }
                 const modal = document.getElementById('image-modal');
                 document.getElementById('modal-image').src = imageSrc;
 
@@ -1860,6 +1880,76 @@
             loader.style.pointerEvents = "none";
             setTimeout(() => loader.remove(), 300);
         });
+
+        /* --- Android / Browser Back Integration (history-based SPA navigation) --- */
+        (function() {
+            const BACK_SELECTOR = 'button[onclick^="app.goHome"]';
+
+            // Make sure we have a base 'home' state
+            try { history.replaceState({ app: 'veggie', view: 'home' }, '', location.pathname + location.search + location.hash); } catch (e) {}
+
+            function pushViewState(view, data, url) {
+                const state = { app: 'veggie', view: view, data: data || {} };
+                const href = typeof url === 'string' ? url : ('#' + view + (data && data.id ? '/' + data.id : ''));
+                try { history.pushState(state, '', href); } catch (err) { /* ignore */ }
+            }
+
+            window.veggieHistory = { pushViewState };
+
+            // Prevent recursion when we programmatically click in-site back
+            let suppressBackClick = false;
+
+            // Intercept in-site back button clicks (e.g. app.goHome()) to use history.back()
+            document.addEventListener('click', function(e) {
+                const btn = e.target.closest(BACK_SELECTOR);
+                if (!btn) return;
+                if (suppressBackClick) { suppressBackClick = false; return; }
+                e.preventDefault();
+                history.back();
+            }, { passive: false });
+
+            // Map popstate entries to app behavior
+            window.addEventListener('popstate', function(e) {
+                const s = e.state;
+                if (!s || s.app !== 'veggie') return; // let browser handle non-app states (exit)
+
+                const marketView = document.getElementById('view-market');
+                const aboutOverlay = document.getElementById('about-overlay');
+                const imageModal = document.getElementById('image-modal');
+
+                if (s.view === 'home') {
+                    if (marketView && !marketView.classList.contains('hidden')) {
+                        app.goHome();
+                    } else if (aboutOverlay && !aboutOverlay.classList.contains('hidden')) {
+                        app.toggleAbout();
+                    } else if (imageModal && (imageModal.classList.contains('active') || !imageModal.classList.contains('hidden'))) {
+                        app.closeModal();
+                    }
+                    return;
+                }
+
+                if (s.view === 'market') {
+                    if (marketView && marketView.classList.contains('hidden')) {
+                        app.showMarket(s.data && s.data.id ? s.data.id : undefined, true);
+                    }
+                    return;
+                }
+
+                if (s.view === 'modal') {
+                    if (s.data && s.data.type === 'image' && s.data.src) {
+                        app.openModal(s.data.src, s.data.marketName || '', s.data.dateStr || '');
+                    }
+                    return;
+                }
+
+                if (s.view === 'about') {
+                    if (aboutOverlay && aboutOverlay.classList.contains('hidden')) {
+                        app.toggleAbout();
+                    }
+                    return;
+                }
+            });
+        })();
 
     </script>
 </body>
