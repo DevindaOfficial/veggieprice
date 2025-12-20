@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VeggiePrice - Sri Lankan Wholesale Market Prices</title>
 
+    <!-- Primary SEO meta -->
+    <meta name="description" content="VeggiePrice provides daily wholesale vegetable prices from major Sri Lankan markets (Dambulla, Nuwara Eliya, Pettah). Updated daily to help farmers and buyers make informed decisions.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://veggieprice.example.org/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:site_name" content="VeggiePrice">
+    <meta property="og:title" content="VeggiePrice - Sri Lankan Wholesale Market Prices">
+    <meta property="og:description" content="Daily wholesale vegetable prices from major Sri Lankan markets. Updated daily.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/imgs/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Structured data (JSON-LD) for basic SEO signals -->
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VeggiePrice",
+      "url": "https://veggieprice.example.org/",
+      "description": "Daily wholesale vegetable prices from major Sri Lankan markets (Dambulla, Nuwara Eliya, Pettah).",
+      "inLanguage": "en"
+    }</script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -301,6 +324,26 @@
             .hero-title .highlight-pen svg {
                 height: 0.9rem;
                 bottom: -0.35rem;
+            }
+
+            /* Position the market action (arrow) higher on mobile cards */
+            .market-card {
+                position: relative;
+            }
+
+            .market-card .market-action-mobile {
+                position: absolute;
+                right: 12px;
+                top: 150px; /* move the arrow up; increase value to push it further up */
+                z-index: 30;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .market-card .market-action-mobile button {
+                width: 44px;
+                height: 44px;
             }
         }
 
@@ -1222,6 +1265,8 @@
                 nav_markets: "Markets",
                 nav_about: "About",
                 hero_title: "Daily Wholesale Vegetable Prices",
+                site_title: "VeggiePrice - Sri Lankan Wholesale Market Prices",
+                meta_description: "VeggiePrice provides daily wholesale vegetable prices from major Sri Lankan markets (Dambulla, Nuwara Eliya, Pettah). Updated daily to help farmers and buyers make informed decisions.",
                 hero_highlight: "Vegetable",
                 hero_subtitle: "Access daily wholesale vegetable prices directly from Dambulla, Nuwara Eliya, and Pettah. We provide real-time, accurate market updates to help farmers and consumers make smarter buying and selling decisions.",
                 updated_label: "Updated:",
@@ -1310,8 +1355,10 @@
                 nav_about: "අප ගැන",
                 // Shorter, simpler copy for modern feel
                 hero_title: "අද එළවළු තොග මිල",
+                site_title: "VeggiePrice - ශ්‍රී ලංකා තොග මිල",
+                meta_description: "VeggiePrice විසින් දඹුල්ල, නුවරඑළිය සහ පිටකොටුව ඇතුළු ප්‍රධාන වෙළඳපොලවල දෛනික තොග මිල දත්ත ලබාදේ. ගොවීන් සහ පාරිභෝගිකයින්ට හොඳ තීරණ ගැනීමට උපකාරී වේ.",
                 hero_highlight: "එළවළු",
-                hero_subtitle: "දඹුල්ල සහ නුවරඑළිය ආර්ථික මධ්‍යස්ථානවලින් සෘජුවම.",
+                hero_subtitle: "දඹුල්ල, නුවරඑළිය හා පිටකොටුව ආර්ථික මධ්‍යස්ථානවලින් සෘජුව ලබාගන්නා දෛනික තොග මිල. අපි නිවැරදි හා යාවත්කාලීන දත්ත ලබා දීමෙන් ගොවීන්ට සහ මිලදීගන්නන්ට ඉක්මන් තීරණ ගැනීමට උපකාර කරමු.",
                 updated_label: "වේලාව:",
                 today_text: "අද",
                 yesterday_text: "ඊයේ",
@@ -1572,6 +1619,13 @@
 
                 // Update hero title with highlight preserved
                 app.setHeroTitle();
+
+                // Update page metadata for SEO & accessibility
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc && t.meta_description) metaDesc.setAttribute('content', t.meta_description);
+                if (t.site_title) document.title = t.site_title;
+                // Update html lang attribute for accessibility and SEO
+                document.documentElement.setAttribute('lang', app.currentLang === 'en' ? 'en' : 'si');
             },
 
             setHeroTitle: () => {
@@ -1661,7 +1715,7 @@
                     const btnText = translations[app.currentLang].view_prices;
 
                     return `
-                            <div onclick="app.showMarket('${m.id}')" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-auto md:h-[420px] flex flex-col self-start w-full">
+                            <div onclick="app.showMarket('${m.id}')" onkeydown="if(event.key==='Enter') app.showMarket('${m.id}')" role="button" tabindex="0" aria-label="${btnText} - ${name}" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-auto md:h-[420px] flex flex-col self-start w-full">
                         <div class="h-28 md:h-[210px] overflow-hidden flex items-center justify-center">
   <img
     src="${m.image}" 
@@ -1677,8 +1731,20 @@
                                 <p class="text-sm text-gray-600 mt-2 max-w-full break-words">${loc}</p>
                             </div>
 
-                            <div class="mt-3">
-                                <button class="w-full bg-green-600 text-white rounded-full py-2 shadow text-sm font-semibold">${btnText} →</button>
+                            <div class="mt-3 flex items-center">
+                                <!-- Desktop/Tablet: full width text button -->
+                                <div class="hidden md:block w-full">
+                                    <button class="w-full bg-green-600 text-white rounded-full py-2 shadow text-sm font-semibold flex items-center justify-center" aria-label="${btnText} - ${name}">
+                                        <span>${btnText} <span aria-hidden="true">→</span></span>
+                                    </button>
+                                </div>
+
+                                <!-- Mobile: compact circular arrow aligned right -->
+                                <div class="ml-auto md:hidden market-action-mobile">
+                                    <button class="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center shadow" aria-label="${btnText} - ${name}">
+                                        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
