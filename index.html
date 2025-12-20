@@ -891,20 +891,20 @@
 
             <!-- Market Header -->
             <div
-                class="bg-white rounded-[2rem] shadow-md border border-gray-100 p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden">
+                class="bg-white rounded-[0.75rem] md:rounded-[1.5rem] shadow-none md:shadow-sm border border-gray-100 p-2 md:p-6 mb-4 md:mb-8 flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 relative overflow-hidden">
                 <div
-                    class="absolute top-0 right-0 w-64 h-64 bg-green-50 rounded-full blur-3xl -mr-32 -mt-32 opacity-50 pointer-events-none">
+                    class="absolute top-0 right-0 w-16 h-16 md:w-48 md:h-48 bg-green-50 rounded-full blur-3xl -mr-12 -mt-12 md:-mr-24 md:-mt-24 opacity-30 pointer-events-none">
                 </div>
                 <img id="detail-market-img" src="" alt="Market"
-                    class="w-24 h-24 object-cover rounded-2xl border-2 border-gray-100 shadow-lg z-10">
+                    class="w-10 h-10 md:w-20 md:h-20 object-cover rounded-md md:rounded-xl border-2 border-gray-100 shadow-none md:shadow-sm z-10">
                 <div class="text-center md:text-left z-10">
-                    <h2 id="detail-market-name" class="text-3xl font-bold text-gray-900 mb-2">Market Name</h2>
+                    <h2 id="detail-market-name" class="text-base md:text-2xl font-bold text-gray-900 mb-0 md:mb-1">Market Name</h2>
                     <p
-                        class="text-gray-500 font-medium flex items-center justify-center md:justify-start bg-gray-50 inline-block px-3 py-1 rounded-lg">
+                        class="text-gray-500 text-xs md:text-sm font-medium flex items-center justify-center md:justify-start bg-gray-50 inline-block px-2 py-0.5 md:px-3 md:py-1 rounded-md md:rounded-lg">
                         <i class="fa-solid fa-location-dot text-red-400 mr-2"></i><span
                             id="detail-market-loc">Location</span>
                     </p>
-                    <p class="text-sm text-gray-400 mt-4 max-w-md leading-relaxed" data-i18n="market_desc">Browse the
+                    <p class="text-xs md:text-sm text-gray-400 mt-3 md:mt-4 max-w-md leading-relaxed" data-i18n="market_desc">Browse the
                         latest wholesale price lists below.</p>
                 </div>
             </div>
