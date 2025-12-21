@@ -858,7 +858,7 @@
                                 <span class="text-xs font-bold text-gray-400 uppercase tracking-wider"
                                     data-i18n="stat_time">Time</span>
                             </div>
-                            <div class="font-bold text-gray-800 text-lg">06:30 AM</div>
+                            <div class="font-bold text-gray-800 text-lg" id="stat-update-time">06:30 AM</div>
                             <div class="text-xs text-green-600 font-semibold" data-i18n="stat_latest">Latest Update
                             </div>
                         </div>
@@ -1229,8 +1229,45 @@
             avocado: 400
         };
 
+        // --- OPTIONAL: Remote / external prices loader ---
+        // If you prefer to keep prices in a separate file, update `data/prices.json`.
+        // The loader will override the inline `marketRates` and set a `pricesLastUpdated` timestamp.
+        async function loadPricesFromFile() {
+            try {
+                const resp = await fetch('data/prices.json', { cache: 'no-cache' });
+                if (!resp.ok) throw new Error('Prices file not found');
+                const json = await resp.json();
+                if (json.rates) Object.assign(marketRates, json.rates);
+                window.pricesLastUpdated = json.lastUpdated || new Date().toISOString();
+                app.updateDynamicPrices();
+                updateStatTime();
+            } catch (e) {
+                // Fallback: try to use the Last-Modified header of the page, else now()
+                try {
+                    const head = await fetch(window.location.href, { method: 'HEAD' });
+                    const lm = head.headers.get('last-modified');
+                    window.pricesLastUpdated = lm ? new Date(lm).toISOString() : new Date().toISOString();
+                } catch (_) {
+                    window.pricesLastUpdated = new Date().toISOString();
+                }
+                app.updateDynamicPrices();
+                updateStatTime();
+            }
+        }
+
+        function updateStatTime() {
+            const el = document.getElementById('stat-update-time');
+            if (!el) return;
+            const iso = window.pricesLastUpdated || new Date().toISOString();
+            const d = new Date(iso);
+            el.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Trigger loader; harmless if the file doesn't exist
+        loadPricesFromFile().catch(() => {});
+
         // --- 2. FLOATING ITEM CONFIG ---
-        const produceItems = [
+        const produceItems = [ 
             { id: "item_Tomato", icon: "🍅", key: "tomato" },
             { id: "item_Carrot", icon: "🥕", key: "carrot" },
             { id: "item_Banana", icon: "🍌", key: "banana" },
@@ -1445,12 +1482,12 @@
             si: ["වෙළඳපොලේ ප්ලාස්ටික් භාවිතය අවම කරමු.", "කාබනික ගොවිතැනට සහාය වෙමු.", "ජල මූලාශ්‍ර පිරිසිදුව තබා ගනිමු.", "ආහාර නාස්තිය අවම කරමු.", "අස්වැන්නක් පාසා පැළයක් සිටුවමු."]
         };
 
-        const markets = [
-            { id: 'dambulla', name: 'Dambulla DEC', nameSi: 'දඹුල්ල ආර්ථික මධ්‍යස්ථානය', location: 'Matale District', locationSi: 'මාතලේ දිස්ත්‍රික්කය', image: 'assets//imgs//keppetipola market.png' },
-            { id: 'nuwaraeliya', name: 'Nuwara Eliya DEC', nameSi: 'නුවරඑළිය ආර්ථික මධ්‍යස්ථානය', location: 'Nuwara Eliya', locationSi: 'නුවරඑළිය', image: 'assets//imgs//keppetipola market.png' },
-            { id: 'thambuttegama', name: 'Thambuttegama DEC', nameSi: 'තඹුත්තේගම ආර්ථික මධ්‍යස්ථානය', location: 'Anuradhapura', locationSi: 'අනුරාධපුර', image: 'assets//imgs//keppetipola market.png' },
-            { id: 'bandarawela', name: 'Bandarawela', nameSi: 'බණ්ඩාරවෙල', location: 'Badulla', locationSi: 'බදුල්ල', image: 'assets//imgs//keppetipola market.png' },
-            { id: 'keppetipola', name: 'Keppetipola DEC', nameSi: 'කැප්පෙටිපොල ආර්ථික මධ්‍යස්ථානය', location: 'Keppetipola', locationSi: 'කැප්පෙටිපොල', image: 'assets//imgs//keppetipola market.png' }
+       const markets = [
+            { id: 'dambulla', name: 'Dambulla DEC', nameSi: 'දඹුල්ල ආර්ථික මධ්‍යස්ථානය', location: 'Matale District', locationSi: 'මාතලේ දිස්ත්‍රික්කය', image: 'assets//imgs//d icon.png' },
+            { id: 'nuwaraeliya', name: 'Nuwara Eliya DEC', nameSi: 'නුවරඑළිය ආර්ථික මධ්‍යස්ථානය', location: 'Nuwara Eliya', locationSi: 'නුවරඑළිය', image: 'assets//imgs//n icon.png' },
+            { id: 'thambuttegama', name: 'Thambuttegama DEC', nameSi: 'තඹුත්තේගම ආර්ථික මධ්‍යස්ථානය', location: 'Anuradhapura', locationSi: 'අනුරාධපුර', image: 'assets//imgs//t icon.png' },
+            { id: 'bandarawela', name: 'Bandarawela', nameSi: 'බණ්ඩාරවෙල', location: 'Badulla', locationSi: 'බදුල්ල', image: 'assets//imgs//b icon.png' },
+            { id: 'keppetipola', name: 'Keppetipola DEC', nameSi: 'කැප්පෙටිපොල ආර්ථික මධ්‍යස්ථානය', location: 'Keppetipola', locationSi: 'කැප්පෙටිපොල', image: 'assets//imgs//k icon.png' }
         ];
 
         // --- APPLICATION LOGIC ---
@@ -1553,6 +1590,9 @@
 
                 const statPrice = document.getElementById('stat-price-carrot');
                 if (statPrice) statPrice.textContent = marketRates.carrot;
+
+                // Update visible timestamp (from prices file or fallback)
+                if (typeof updateStatTime === 'function') updateStatTime();
             },
 
             startNatureCarousel: () => {
