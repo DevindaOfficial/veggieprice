@@ -704,6 +704,26 @@ i.fa-brands {
         margin-bottom: 0 !important;
     }
 
+    /* Fix market detail view spacing */
+    #view-market {
+        padding-top: 0.5rem !important;
+    }
+
+    #view-market > div:first-child {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    /* Reduce back button spacing */
+    #view-market button[onclick*="goHome"] {
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Reduce gap from navbar to back button */
+    #view-market > * {
+        margin-top: 0 !important;
+    }
+
     .market-card {
         min-height: auto !important;
     }
