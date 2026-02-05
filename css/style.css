@@ -82,6 +82,43 @@ nav {
     /* Ensure it's not transparent */
 }
 
+/* Mobile Menu Styles */
+.mobile-menu-dropdown {
+    top: 55px !important;
+    max-height: calc(100vh - 55px) !important;
+    overflow-y: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+}
+
+.mobile-menu-link {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0.75rem !important;
+    color: #4b5563 !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    border-radius: 0.5rem !important;
+    transition: all 0.2s ease !important;
+    border: none !important;
+    background: transparent !important;
+    font-size: 0.95rem !important;
+    cursor: pointer !important;
+}
+
+.mobile-menu-link:hover {
+    color: #16a34a !important;
+    background-color: #f0fdf4 !important;
+}
+
+.emoji-fun-btn {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
 /* Modal Transition */
 .modal {
     transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -594,6 +631,11 @@ i.fa-brands {
     #view-market {
         margin-top: 55px !important;
         padding-top: 0 !important;
+    }
+
+    /* Mobile Menu fixes */
+    .mobile-menu-dropdown {
+        top: 55px !important;
     }
 
     /* FIX 2: Make title smaller on mobile */
