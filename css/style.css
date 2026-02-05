@@ -1,0 +1,562 @@
+body {
+    font-family: 'Inter', sans-serif;
+    /* Default to English font */
+    background: linear-gradient(135deg, #fdfbf7 0%, #ffffff 50%, #f0fdf4 100%);
+    background-attachment: fixed;
+    color: #374151;
+    /* gray-700 */
+    overflow-x: hidden;
+    position: relative;
+    padding-top: -100px !important;
+}
+
+/* --- SINHALA TYPOGRAPHY RULES (CRITICAL FIXES) --- */
+body.lang-si {
+    font-family: 'Noto Sans Sinhala', sans-serif !important;
+}
+
+/* More breathing room for Sinhala headings */
+body.lang-si h1,
+body.lang-si h2,
+body.lang-si h3,
+body.lang-si .hero-title {
+    line-height: 1.5 !important;
+    /* Increase vertical space */
+    font-weight: 600 !important;
+    /* Semi-bold instead of Bold */
+    letter-spacing: 0.01em;
+}
+
+/* Adjust visual weight of large headings */
+body.lang-si .hero-title {
+    font-size: 2.2rem !important;
+    /* Slightly smaller than English to fix balance */
+}
+
+@media (min-width: 768px) {
+    body.lang-si .hero-title {
+        font-size: 3rem !important;
+    }
+}
+
+/* Better paragraph flow */
+body.lang-si p {
+    line-height: 1.7 !important;
+    font-weight: 400;
+}
+
+body.lang-si .text-xs {
+    font-size: 0.8rem;
+    /* Slightly larger small text for readability */
+}
+
+/* --- End Sinhala Rules --- */
+
+/* Smooth Fade In Animation */
+.fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 70px !important;
+    /* Fixed height for stability */
+    z-index: 50 !important;
+    /* Higher than emoji bar */
+    background: white;
+    /* Ensure it's not transparent */
+}
+
+/* Modal Transition */
+.modal {
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 50;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    /* gray-300 */
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* --- Floating Produce Animation Layer --- */
+#floating-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to main content */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.produce-icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0;
+    user-select: none;
+    pointer-events: auto;
+    /* Re-enable pointer events for the icons themselves */
+    cursor: help;
+    transition: transform 0.3s, opacity 0.3s, filter 0.3s;
+    z-index: 5;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+}
+
+.produce-icon:hover {
+    opacity: 1 !important;
+    transform: scale(1.25) !important;
+    z-index: 20;
+    animation-play-state: paused;
+    /* Stop moving on hover */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(110vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    33% {
+        transform: translateY(70vh) translateX(25px) rotate(10deg);
+    }
+
+    66% {
+        transform: translateY(30vh) translateX(-25px) rotate(-10deg);
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-20vh) translateX(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Tooltip Styling */
+.produce-tooltip {
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #166534;
+    padding: 10px 16px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    z-index: 30;
+}
+
+.produce-icon:hover .produce-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.price-highlight {
+    color: #ea580c;
+    font-weight: 800;
+    display: block;
+    margin-top: 4px;
+    font-size: 0.95em;
+}
+
+/* Price Legend Box */
+.legend-box {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 40;
+    transition: all 0.3s ease;
+}
+
+/* Subtle glow for hero */
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(240, 253, 244, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Highlighter / marker underline for hero 'Vegetable' */
+.hero-title .highlight-pen {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title .highlight-pen svg {
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 1.2rem;
+    transform-origin: center;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero-title .highlight-pen path {
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 6px 6px rgba(16, 185, 129, 0.12));
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .hero-title .highlight-pen svg {
+        height: 0.9rem;
+        bottom: -0.35rem;
+    }
+
+    /* Position the market action (arrow) higher on mobile cards */
+    .market-card {
+        position: relative;
+    }
+
+    .market-card .market-action-mobile {
+        position: absolute;
+        right: 12px;
+        top: 195px; /* move the arrow up; increase value to push it further up */
+        z-index: 30;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .market-card .market-action-mobile button {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Nature Section Animations */
+@keyframes slowZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.animate-slow-zoom {
+    animation: slowZoom 20s infinite alternate linear;
+}
+
+/* Small nudge for hero left column to sit slightly higher */
+.hero-left {
+    transform: translateY(-8px);
+}
+
+@media (min-width: 768px) {
+    .hero-left {
+        transform: translateY(-18px);
+    }
+}
+
+
+/* EXCEPTION: Keep the main Brand Logo orange */
+#brand-logo-container i {
+    color: #f97316 !important;
+    /* orange-500 */
+}
+
+i.fa-solid:not(.fa-carrot),
+i.fa-regular,
+i.fa-brands {
+    color: #15803d !important;
+    /* green-700 */
+}
+
+#emoji-interaction-panel.hidden-bar {
+    transform: translateY(-100%);
+    /* Moves up by its own height */
+    z-index: 30;
+    /* Drops behind nav */
+}
+
+/* LOADER */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 42px;
+    height: 42px;
+    border: 4px solid #e5e7eb;
+    border-top-color: #1f7a4d;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin-bottom: 12px;
+}
+
+#loader p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Emoji Nav Button Styles */
+#emoji-toggle-nav-btn {
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#emoji-toggle-nav-btn .carrot-emoji {
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+}
+
+#emoji-toggle-nav-btn.active .carrot-emoji {
+    animation: pulse 1.2s infinite ease-in-out;
+    transform-origin: center;
+}
+
+#emoji-toggle-nav-btn.pressed {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Ripple element */
+.emoji-ripple {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+    }
+}
+
+.emoji-ripple.animate {
+    animation: ripple 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Mobile floating button (hidden on md+) */
+#emoji-toggle-mobile {
+    display: none;
+    position: relative;
+    overflow: hidden;
+}
+
+#emoji-toggle-mobile.pressed {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Mobile nav emoji button (visible only on small screens) */
+#emoji-toggle-nav-mobile {
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#emoji-toggle-nav-mobile .carrot-emoji {
+    font-size: 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+}
+
+/* Shared active/pulsing animation for mobile/desktop emoji buttons */
+#emoji-toggle-nav-mobile.active .carrot-emoji,
+#emoji-toggle-mobile.active .carrot-emoji,
+#emoji-toggle-nav-btn.active .carrot-emoji {
+    animation: pulse 1.2s infinite ease-in-out;
+    transform-origin: center;
+}
+
+#emoji-toggle-nav-mobile.pressed,
+#emoji-toggle-mobile.pressed {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+@media (max-width: 767px) {
+    #emoji-toggle-mobile {
+        display: flex;
+    }
+
+    #emoji-toggle-nav-btn {
+        display: none;
+    }
+
+    .produce-icon {
+        font-size: 1.4rem;
+    }
+
+    .falling-emoji,
+    .boom-emoji {
+        font-size: 22px;
+    }
+}
+
+/* Falling and Boom emoji styles */
+.falling-emoji,
+.boom-emoji {
+    position: fixed;
+    pointer-events: none;
+    z-index: 60;
+    font-size: 28px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes boom {
+    0% {
+        transform: scale(0.6) rotate(0deg);
+        opacity: 1;
+    }
+
+    40% {
+        transform: scale(1.6) rotate(180deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
