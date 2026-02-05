@@ -546,13 +546,13 @@ const app = {
     renderMarkets: () => {
         const grid = document.getElementById('market-grid');
         
-        // SVG market icons
+        // Professional market icons - modern design
         const marketIcons = {
-            'dambulla': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M25 80 L30 40 L70 40 L75 80 M30 40 L70 40 M35 60 L65 60" stroke="#16a34a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="70" r="3" fill="#16a34a"/><circle cx="60" cy="70" r="3" fill="#16a34a"/></svg>',
-            'nuwaraeliya': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="35" width="60" height="45" rx="3" stroke="#16a34a" stroke-width="3" fill="none"/><line x1="50" y1="35" x2="50" y2="80" stroke="#16a34a" stroke-width="2"/><line x1="20" y1="57" x2="80" y2="57" stroke="#16a34a" stroke-width="2"/><circle cx="32" cy="46" r="4" fill="#16a34a"/><circle cx="68" cy="46" r="4" fill="#16a34a"/><circle cx="32" cy="68" r="4" fill="#16a34a"/><circle cx="68" cy="68" r="4" fill="#16a34a"/></svg>',
-            'thambuttegama': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 70 L25 35 Q50 25 75 35 L80 70" stroke="#16a34a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 50 L70 50" stroke="#16a34a" stroke-width="2"/><circle cx="35" cy="42" r="2.5" fill="#16a34a"/><circle cx="50" cy="38" r="2.5" fill="#16a34a"/><circle cx="65" cy="42" r="2.5" fill="#16a34a"/></svg>',
-            'bandarawela': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L80 50 L75 50 L75 75 L25 75 L25 50 L20 50 Z" stroke="#16a34a" stroke-width="2.5" fill="#16a34a" fill-opacity="0.1" stroke-linejoin="round"/><rect x="35" y="55" width="12" height="20" stroke="#16a34a" stroke-width="2" fill="none"/><rect x="53" y="55" width="12" height="20" stroke="#16a34a" stroke-width="2" fill="none"/><rect x="38" y="58" width="6" height="6" fill="#16a34a"/><rect x="56" y="58" width="6" height="6" fill="#16a34a"/></svg>',
-            'keppetipola': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="35" stroke="#16a34a" stroke-width="3" fill="none"/><path d="M50 20 L60 45 L85 45 L68 62 L78 85 L50 68 L22 85 L32 62 L15 45 L40 45 Z" fill="#16a34a" opacity="0.3"/><path d="M50 20 L60 45 L85 45 L68 62 L78 85 L50 68 L22 85 L32 62 L15 45 L40 45 Z" stroke="#16a34a" stroke-width="2" fill="none"/></svg>'
+            'dambulla': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="market-icon"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" /><stop offset="100%" style="stop-color:#15803d;stop-opacity:1" /></linearGradient></defs><rect x="15" y="25" width="70" height="50" rx="4" stroke="url(#grad1)" stroke-width="2.5" fill="none"/><circle cx="30" cy="38" r="4" fill="#16a34a"/><circle cx="50" cy="38" r="4" fill="#16a34a"/><circle cx="70" cy="38" r="4" fill="#16a34a"/><path d="M18 50 L82 50" stroke="#16a34a" stroke-width="1.5" opacity="0.5"/><path d="M20 58 L35 65 M50 58 L65 65 M75 58 L82 65" stroke="#16a34a" stroke-width="2" stroke-linecap="round"/></svg>',
+            'nuwaraeliya': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="market-icon"><defs><linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" /><stop offset="100%" style="stop-color:#15803d;stop-opacity:1" /></linearGradient></defs><path d="M20 45 L35 25 L50 30 L65 25 L80 45 L75 45 L75 70 L25 70 L25 45 Z" stroke="url(#grad2)" stroke-width="2.5" fill="none" stroke-linejoin="round"/><line x1="35" y1="45" x2="35" y2="70" stroke="#16a34a" stroke-width="1.5" opacity="0.6"/><line x1="50" y1="45" x2="50" y2="70" stroke="#16a34a" stroke-width="1.5" opacity="0.6"/><line x1="65" y1="45" x2="65" y2="70" stroke="#16a34a" stroke-width="1.5" opacity="0.6"/></svg>',
+            'thambuttegama': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="market-icon"><defs><linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" /><stop offset="100%" style="stop-color:#15803d;stop-opacity:1" /></linearGradient></defs><circle cx="50" cy="50" r="30" stroke="url(#grad3)" stroke-width="2" fill="none"/><path d="M50 25 L62 40 L78 42 L68 50 L70 66 L50 58 L30 66 L32 50 L22 42 L38 40 Z" fill="#16a34a" opacity="0.3"/><path d="M50 25 L62 40 L78 42 L68 50 L70 66 L50 58 L30 66 L32 50 L22 42 L38 40 Z" stroke="#16a34a" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>',
+            'bandarawela': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="market-icon"><defs><linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" /><stop offset="100%" style="stop-color:#15803d;stop-opacity:1" /></linearGradient></defs><path d="M50 20 L80 45 L72 45 L72 75 L28 75 L28 45 L20 45 Z" stroke="url(#grad4)" stroke-width="2.5" fill="none" stroke-linejoin="round"/><rect x="38" y="50" width="10" height="15" stroke="#16a34a" stroke-width="1.5" fill="none"/><rect x="52" y="50" width="10" height="15" stroke="#16a34a" stroke-width="1.5" fill="none"/><circle cx="43" cy="57" r="1.5" fill="#16a34a"/><circle cx="57" cy="57" r="1.5" fill="#16a34a"/><circle cx="43" cy="62" r="1.5" fill="#16a34a"/><circle cx="57" cy="62" r="1.5" fill="#16a34a"/></svg>',
+            'keppetipola': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="market-icon"><defs><linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" /><stop offset="100%" style="stop-color:#15803d;stop-opacity:1" /></linearGradient></defs><path d="M50 20 L75 50 L70 50 L70 75 L30 75 L30 50 L25 50 Z" stroke="url(#grad5)" stroke-width="2.5" fill="none" stroke-linejoin="round"/><path d="M40 55 L50 40 L60 55" stroke="#16a34a" stroke-width="2" fill="none" stroke-linejoin="round"/><circle cx="50" cy="65" r="4" stroke="#16a34a" stroke-width="1.5" fill="none"/></svg>'
         };
         
         grid.innerHTML = markets.map(m => {
@@ -563,30 +563,30 @@ const app = {
 
             return `
                     <div onclick="app.showMarket('${m.id}')" onkeydown="if(event.key==='Enter') app.showMarket('${m.id}')" role="button" tabindex="0" aria-label="${btnText} - ${name}" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-auto md:h-[420px] flex flex-col self-start w-full">
-                <div class="h-28 md:h-[210px] overflow-hidden flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50">
-                    <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <div class="h-32 md:h-56 overflow-hidden flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-25 to-green-50 relative">
+                    <div class="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                         ${icon}
                     </div>
                 </div>
 
-                <div class="bg-white p-3 md:p-4 flex flex-col justify-between h-[120px] md:h-[210px]">
+                <div class="bg-white px-4 py-3 md:px-6 md:py-4 flex flex-col justify-between flex-grow">
                     <div>
-                        <h3 class="text-xs sm:text-sm md:text-lg md:text-xl font-semibold text-gray-900 leading-tight break-words md:min-h-[72px]">${name}</h3>
-                        <p class="text-sm text-gray-600 mt-2 max-w-full break-words">${loc}</p>
+                        <h3 class="text-sm sm:text-base md:text-xl font-semibold text-gray-900 leading-snug break-words md:min-h-[56px]">${name}</h3>
+                        <p class="text-xs sm:text-sm text-gray-600 mt-1.5 md:mt-2 max-w-full break-words">${loc}</p>
                     </div>
 
-                    <div class="mt-3 flex items-center">
+                    <div class="mt-3 md:mt-4 flex items-center">
                         <!-- Desktop/Tablet: full width text button -->
                         <div class="hidden md:block w-full">
-                            <button class="w-full bg-green-600 text-white rounded-full py-2 shadow text-sm font-semibold flex items-center justify-center" aria-label="${btnText} - ${name}">
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white rounded-full py-2 shadow text-sm font-semibold flex items-center justify-center transition-colors" aria-label="${btnText} - ${name}">
                                 <span>${btnText} <span aria-hidden="true">→</span></span>
                             </button>
                         </div>
 
                         <!-- Mobile: compact circular arrow aligned right -->
                         <div class="ml-auto md:hidden market-action-mobile">
-                            <button class="w-10 h-10 bg-black-600 text-white rounded-full flex items-center justify-center shadow" aria-label="${btnText} - ${name}">
-                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            <button class="w-10 h-10 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center justify-center shadow transition-colors" aria-label="${btnText} - ${name}">
+                                <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -830,14 +830,18 @@ const floatingFx = {
 
         el.style.left = `${leftPos}%`;
         el.style.animation = `floatUp ${duration}s ease-in-out ${delay}s forwards`;
+        el.style.willChange = 'transform, opacity';
 
         floatingFx.container.appendChild(el);
         floatingFx.activeIcons++;
 
-        el.addEventListener('animationend', () => {
+        const handleAnimationEnd = () => {
+            el.removeEventListener('animationend', handleAnimationEnd);
             el.remove();
             floatingFx.activeIcons--;
-        });
+        };
+        
+        el.addEventListener('animationend', handleAnimationEnd, { once: true });
     },
 
     toggleLegend: () => {
@@ -936,8 +940,14 @@ const emojiController = {
         el.style.left = `${Math.random() * 90 + 3}%`;
         const duration = 3 + Math.random() * 3;
         el.style.animation = `fallDown ${duration}s linear forwards`;
+        el.style.willChange = 'transform, opacity';
         document.body.appendChild(el);
-        el.addEventListener('animationend', () => el.remove());
+        
+        const handleAnimationEnd = () => {
+            el.removeEventListener('animationend', handleAnimationEnd);
+            el.remove();
+        };
+        el.addEventListener('animationend', handleAnimationEnd, { once: true });
     },
     spawnBoom() {
         const icon = produceItems[Math.floor(Math.random() * produceItems.length)].icon;
@@ -949,8 +959,14 @@ const emojiController = {
         const duration = 0.7 + Math.random() * 0.8;
         el.style.animation = `boom ${duration}s ease-out forwards`;
         el.style.fontSize = `${20 + Math.random() * 40}px`;
+        el.style.willChange = 'transform, opacity';
         document.body.appendChild(el);
-        el.addEventListener('animationend', () => el.remove());
+        
+        const handleAnimationEnd = () => {
+            el.removeEventListener('animationend', handleAnimationEnd);
+            el.remove();
+        };
+        el.addEventListener('animationend', handleAnimationEnd, { once: true });
     }
 };
 
