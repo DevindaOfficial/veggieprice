@@ -82,6 +82,17 @@ nav {
     /* Ensure it's not transparent */
 }
 
+/* Hide desktop nav links on mobile */
+@media (max-width: 767px) {
+    nav > div:first-child {
+        display: none !important;
+    }
+
+    nav .hidden.md\:flex {
+        display: none !important;
+    }
+}
+
 /* Modal Transition */
 .modal {
     transition: opacity 0.4s ease, visibility 0.4s ease;
