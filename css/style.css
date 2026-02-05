@@ -84,11 +84,15 @@ nav {
 
 /* Hide desktop nav links on mobile */
 @media (max-width: 767px) {
-    nav > div:first-child {
+    .hidden.md\:flex {
         display: none !important;
     }
 
-    nav .hidden.md\:flex {
+    nav .hidden.md\:flex.items-center {
+        display: none !important;
+    }
+
+    #mobile-menu.hidden {
         display: none !important;
     }
 }
