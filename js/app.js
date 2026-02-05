@@ -545,21 +545,29 @@ const app = {
 
     renderMarkets: () => {
         const grid = document.getElementById('market-grid');
+        
+        // SVG market icons
+        const marketIcons = {
+            'dambulla': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M25 80 L30 40 L70 40 L75 80 M30 40 L70 40 M35 60 L65 60" stroke="#16a34a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="70" r="3" fill="#16a34a"/><circle cx="60" cy="70" r="3" fill="#16a34a"/></svg>',
+            'nuwaraeliya': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="35" width="60" height="45" rx="3" stroke="#16a34a" stroke-width="3" fill="none"/><line x1="50" y1="35" x2="50" y2="80" stroke="#16a34a" stroke-width="2"/><line x1="20" y1="57" x2="80" y2="57" stroke="#16a34a" stroke-width="2"/><circle cx="32" cy="46" r="4" fill="#16a34a"/><circle cx="68" cy="46" r="4" fill="#16a34a"/><circle cx="32" cy="68" r="4" fill="#16a34a"/><circle cx="68" cy="68" r="4" fill="#16a34a"/></svg>',
+            'thambuttegama': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 70 L25 35 Q50 25 75 35 L80 70" stroke="#16a34a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 50 L70 50" stroke="#16a34a" stroke-width="2"/><circle cx="35" cy="42" r="2.5" fill="#16a34a"/><circle cx="50" cy="38" r="2.5" fill="#16a34a"/><circle cx="65" cy="42" r="2.5" fill="#16a34a"/></svg>',
+            'bandarawela': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 L80 50 L75 50 L75 75 L25 75 L25 50 L20 50 Z" stroke="#16a34a" stroke-width="2.5" fill="#16a34a" fill-opacity="0.1" stroke-linejoin="round"/><rect x="35" y="55" width="12" height="20" stroke="#16a34a" stroke-width="2" fill="none"/><rect x="53" y="55" width="12" height="20" stroke="#16a34a" stroke-width="2" fill="none"/><rect x="38" y="58" width="6" height="6" fill="#16a34a"/><rect x="56" y="58" width="6" height="6" fill="#16a34a"/></svg>',
+            'keppetipola': '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="35" stroke="#16a34a" stroke-width="3" fill="none"/><path d="M50 20 L60 45 L85 45 L68 62 L78 85 L50 68 L22 85 L32 62 L15 45 L40 45 Z" fill="#16a34a" opacity="0.3"/><path d="M50 20 L60 45 L85 45 L68 62 L78 85 L50 68 L22 85 L32 62 L15 45 L40 45 Z" stroke="#16a34a" stroke-width="2" fill="none"/></svg>'
+        };
+        
         grid.innerHTML = markets.map(m => {
             const name = app.currentLang === 'si' ? m.nameSi : m.name;
             const loc = app.currentLang === 'si' ? m.locationSi : m.location;
             const btnText = translations[app.currentLang].view_prices;
+            const icon = marketIcons[m.id] || marketIcons['dambulla'];
 
             return `
                     <div onclick="app.showMarket('${m.id}')" onkeydown="if(event.key==='Enter') app.showMarket('${m.id}')" role="button" tabindex="0" aria-label="${btnText} - ${name}" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-auto md:h-[420px] flex flex-col self-start w-full">
-                <div class="h-28 md:h-[210px] overflow-hidden flex items-center justify-center">
-  <img
-    src="${m.image}" 
-    alt="${name}" 
-     class="w-32 h-32 object-contain object-center transition-transform duration-300 group-hover:scale-105 mx-auto"
-    onerror="this.src='https://placehold.co/400x300?text=Market'"
-  >
-</div>
+                <div class="h-28 md:h-[210px] overflow-hidden flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50">
+                    <div class="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                        ${icon}
+                    </div>
+                </div>
 
                 <div class="bg-white p-3 md:p-4 flex flex-col justify-between h-[120px] md:h-[210px]">
                     <div>
