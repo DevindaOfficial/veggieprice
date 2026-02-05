@@ -585,8 +585,112 @@ i.fa-brands {
 
 /* Mobile spacing fixes */
 @media (max-width: 767px) {
+    /* Fix navbar height */
+    nav {
+        height: 55px !important;
+    }
+
+    /* Fix gap between navbar and content */
+    #view-home,
+    #view-market {
+        margin-top: 55px !important;
+    }
+
+    /* Fix mobile menu positioning and layout */
+    #mobile-menu {
+        position: fixed !important;
+        top: 55px !important;
+        left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0.5rem !important;
+        gap: 0.25rem !important;
+        z-index: 40 !important;
+    }
+
+    #mobile-menu a,
+    #mobile-menu button {
+        padding: 0.6rem 0.75rem !important;
+        margin: 0 !important;
+        border: none !important;
+        text-align: left !important;
+        font-size: 0.9rem !important;
+        border-bottom: none !important;
+        border-radius: 0.375rem !important;
+        background: transparent !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+    }
+
+    #mobile-menu a:hover,
+    #mobile-menu button:hover {
+        background: #f0fdf4 !important;
+    }
+
+    #mobile-menu button {
+        cursor: pointer !important;
+        width: 100% !important;
+        font-weight: 500 !important;
+    }
+
+    #mobile-menu button span {
+        padding: 0.35rem !important;
+        font-size: 1rem !important;
+    }
+
+    /* Make hero title smaller */
+    .hero-title {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    h1 {
+        font-size: 1.3rem !important;
+    }
+
+    /* Reduce section spacing */
+    .pt-12 {
+        padding-top: 0.5rem !important;
+    }
+
+    .pb-16 {
+        padding-bottom: 0.75rem !important;
+    }
+
+    /* Fix container padding */
+    .container.mx-auto {
+        padding: 0 0.75rem !important;
+    }
+
+    .px-6 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .pl-4 {
+        padding-left: 0.75rem !important;
+    }
+
+    .pl-24 {
+        padding-left: 0.75rem !important;
+    }
+
+    .pl-12 {
+        padding-left: 0.75rem !important;
+    }
+
+    /* Reduce section gaps */
+    section {
+        margin-bottom: 0 !important;
+    }
+
+    .border-b {
+        margin-bottom: 0 !important;
+    }
+
     .market-card {
-        min-height: 320px;
+        min-height: auto !important;
     }
     
     .produce-icon {
