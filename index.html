@@ -130,18 +130,18 @@
         </div>
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu"
-            class="hidden bg-white/95 backdrop-blur-md md:hidden pb-2 px-2 transition-all border-t border-gray-100 shadow-lg fixed w-full left-0 z-40 mobile-menu-dropdown">
+            class="hidden bg-white/95 backdrop-blur-md md:hidden pb-4 px-4 transition-all border-t border-gray-100 shadow-lg absolute w-full left-0">
             <a href="#" onclick="app.goHome(); app.toggleMobileMenu()"
-                class="mobile-menu-link"
+                class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
                 data-i18n="nav_home">Home</a>
             <a href="#" onclick="app.scrollToSection('markets'); app.toggleMobileMenu()"
-                class="mobile-menu-link"
+                class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
                 data-i18n="nav_markets">Markets</a>
             <a href="#" onclick="app.toggleAbout(); app.toggleMobileMenu()"
-                class="mobile-menu-link" data-i18n="nav_about">About</a>
+                class="block py-4 text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_about">About</a>
             <button onclick="emojiController.handleClick(event); app.toggleMobileMenu()"
-                class="mobile-menu-link emoji-fun-btn">
-                <span class="bg-orange-100 p-1.5 rounded-full text-lg">🥕</span> Emoji Fun
+                class="w-full text-left py-4 text-gray-600 hover:text-green-600 font-medium flex items-center gap-3">
+                <span class="bg-orange-100 p-2 rounded-full">🥕</span> Emoji Fun
             </button>
         </div>
     </nav>
