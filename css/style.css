@@ -609,7 +609,18 @@ i.fa-brands {
     #view-home,
     #view-market {
         margin-top: 55px !important;
-        padding-top: 0.5rem !important;
+        padding-top: 0 !important;
+    }
+
+    /* Bring hero section higher - reduce top padding */
+    #view-home > section:first-child {
+        padding-top: 0.25rem !important;
+    }
+
+    /* Reduce padding on hero section */
+    .relative.bg-gradient-to-b {
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.5rem !important;
     }
 
     /* Fix mobile menu positioning and layout */
