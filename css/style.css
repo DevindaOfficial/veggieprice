@@ -585,10 +585,168 @@ i.fa-brands {
 
 /* Mobile spacing fixes */
 @media (max-width: 767px) {
-    .market-card {
-        min-height: 320px;
+    /* FIX 1: Reduce nav height and fix content gap */
+    nav {
+        height: 55px !important;
     }
     
+    #view-home,
+    #view-market {
+        margin-top: 55px !important;
+        padding-top: 0 !important;
+    }
+
+    /* FIX 2: Make title smaller on mobile */
+    .hero-title,
+    h1 {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* FIX 3: Fix hamburger menu visibility */
+    .md\:hidden {
+        display: flex !important;
+    }
+    
+    #mobile-menu-btn,
+    .mobile-menu-button {
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0.5rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .hamburger {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+    }
+
+    .hamburger span {
+        width: 24px !important;
+        height: 2px !important;
+        background: #1f2937 !important;
+        display: block !important;
+    }
+
+    /* FIX 4: Reduce hero section spacing */
+    .pt-12 {
+        padding-top: 0.5rem !important;
+    }
+
+    .pb-16 {
+        padding-bottom: 0.75rem !important;
+    }
+
+    /* FIX 5: Reduce gaps between sections */
+    section {
+        margin-bottom: 0 !important;
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .border-b {
+        margin-bottom: 0 !important;
+    }
+
+    /* FIX 6: Tighten container padding */
+    .container {
+        padding: 0 0.75rem !important;
+    }
+
+    .px-6 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .px-4 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    .pl-4,
+    .pl-12,
+    .pl-24 {
+        padding-left: 0.75rem !important;
+    }
+
+    /* FIX 7: Reduce text sizes on mobile */
+    .text-lg {
+        font-size: 1rem !important;
+    }
+
+    .text-xl {
+        font-size: 1.1rem !important;
+    }
+
+    .text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    .text-sm {
+        font-size: 0.85rem !important;
+    }
+
+    /* FIX 8: Reduce badge spacing */
+    .flex.gap-2 {
+        gap: 0.5rem !important;
+    }
+
+    .flex.gap-4 {
+        gap: 0.5rem !important;
+    }
+
+    /* FIX 9: Tighten hero trust badges */
+    .trust-badge {
+        padding: 0.35rem 0.75rem !important;
+        font-size: 0.8rem !important;
+        margin-right: 0.5rem !important;
+    }
+
+    /* FIX 10: Reduce hero description text margin */
+    .hero-section p {
+        margin-top: 0.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* FIX 11: Reduce stats section spacing */
+    #stats-section {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    /* FIX 12: Tighten market cards */
+    #market-grid {
+        gap: 0.5rem !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    .market-card {
+        min-height: auto !important;
+    }
+
+    .market-card > div:first-child {
+        height: 100px !important;
+    }
+
+    /* FIX 13: Fix detail view (market details) */
+    #detail-market-name {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    #detail-market-loc {
+        font-size: 0.85rem !important;
+    }
+
+    /* FIX 14: Reduce back button spacing */
+    .back-button {
+        margin-bottom: 0.75rem !important;
+    }
+
     .produce-icon {
         will-change: transform;
         backface-visibility: hidden;
