@@ -585,8 +585,247 @@ i.fa-brands {
 
 /* Mobile spacing fixes */
 @media (max-width: 767px) {
+    /* --- SPACING REDUCTIONS --- */
+    body {
+        padding-top: 0 !important;
+    }
+
+    /* Reduce section spacing */
+    section {
+        margin: 0.5rem 0 !important;
+        padding: 1rem 0 !important;
+    }
+
+    /* Tighten hero section */
+    .hero-section {
+        padding-top: 5.5rem !important;
+        padding-bottom: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .hero-section h1,
+    .hero-title {
+        margin-bottom: 0.75rem !important;
+        font-size: 1.75rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero-section p {
+        margin-bottom: 1rem !important;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Reduce container padding */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Compact button spacing */
+    button {
+        margin: 0.25rem 0 !important;
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* Reduce card spacing */
     .market-card {
-        min-height: 320px;
+        margin-bottom: 0.75rem !important;
+        min-height: auto !important;
+    }
+
+    .market-card > div:first-child {
+        height: 120px !important;
+    }
+
+    .market-card > div:last-child {
+        padding: 0.75rem !important;
+    }
+
+    /* Grid spacing */
+    .grid {
+        gap: 0.75rem !important;
+    }
+
+    /* Compact trust badges */
+    .trust-badge {
+        margin: 0.25rem !important;
+        padding: 0.35rem 0.75rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Reduce heading spacing */
+    h2, h3 {
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+        font-size: 1.25rem !important;
+    }
+
+    /* Tighten recent updates section */
+    .recent-updates,
+    .recent-updates-header {
+        margin: 0.5rem 0 !important;
+        padding: 0.75rem 0 !important;
+    }
+
+    /* Compact price cards grid */
+    #recent-prices-grid {
+        gap: 0.5rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    #recent-prices-grid > div {
+        margin: 0 !important;
+    }
+
+    /* Reduce past prices spacing */
+    #past-prices-container {
+        margin: 0.75rem 0 !important;
+        padding: 0.75rem 0 !important;
+    }
+
+    #past-prices-grid {
+        gap: 0.5rem !important;
+    }
+
+    /* Fix header-to-content gap */
+    #view-home,
+    #view-market {
+        margin-top: 70px !important;
+        padding-top: 0.5rem !important;
+    }
+
+    /* Reduce footer spacing */
+    footer {
+        margin-top: 1rem !important;
+        padding: 1rem 0.75rem !important;
+    }
+
+    /* Compact text */
+    .text-sm {
+        font-size: 0.85rem !important;
+    }
+
+    .text-xs {
+        font-size: 0.75rem !important;
+    }
+
+    /* Reduce stat spacing */
+    .stat-badge,
+    .stat-item {
+        margin: 0.25rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    /* Compact nature advice section */
+    #nature-advice-section {
+        margin: 0.75rem 0 !important;
+        padding: 1rem 0.75rem !important;
+    }
+
+    /* Reduce about button spacing */
+    [onclick*="toggleAbout"] {
+        margin: 0.25rem !important;
+    }
+
+    /* Fix modal spacing */
+    .modal-content {
+        margin: 0.5rem !important;
+        padding: 1rem !important;
+    }
+
+    /* Override Tailwind spacing classes on mobile */
+    .pt-12 {
+        padding-top: 1rem !important;
+    }
+
+    .pb-16 {
+        padding-bottom: 1rem !important;
+    }
+
+    .py-6 {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .py-10 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+    }
+
+    .py-8 {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .mb-6 {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 0.25rem !important;
+    }
+
+    .gap-12 {
+        gap: 0.75rem !important;
+    }
+
+    .gap-4 {
+        gap: 0.5rem !important;
+    }
+
+    /* Compact hero section */
+    .hero-section .pt-12 {
+        padding-top: 4.5rem !important;
+    }
+
+    /* Reduce container padding on mobile */
+    .px-6 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .pl-4 {
+        padding-left: 1rem !important;
+    }
+
+    .pl-24 {
+        padding-left: 1rem !important;
+    }
+
+    .pl-12 {
+        padding-left: 1rem !important;
+    }
+
+    /* Tighten stats section */
+    #stats-section {
+        padding: 0.75rem 0 !important;
+    }
+
+    /* Fix logo and header area gaps */
+    nav {
+        height: 60px !important;
+    }
+
+    #view-home,
+    #view-market {
+        margin-top: 60px !important;
+    }
+
+    /* Reduce gap between sections */
+    section + section {
+        margin-top: 0.25rem !important;
+    }
+
+    /* Tighten market cards grid */
+    #market-grid {
+        gap: 0.5rem !important;
+        padding: 0.5rem 0 !important;
+    }
+    
+    .market-card {
+        will-change: transform;
+        backface-visibility: hidden;
     }
     
     .produce-icon {
@@ -595,3 +834,4 @@ i.fa-brands {
         -webkit-font-smoothing: antialiased;
     }
 }
+
