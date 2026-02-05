@@ -344,42 +344,34 @@ const app = {
         });
     },
 
-    // Create sample map for preview logic
-    generateDemoData: () => {
-        const today = getDateStr(0);
-        const yesterday = getDateStr(1);
-        const day2 = getDateStr(2);
-        const day4 = getDateStr(4);
-        const day10 = getDateStr(10);
-
+    // Load market data from prices.json
+    generateDemoData: async () => {
         priceDataMap = {};
-
-        priceDataMap[today] = {
-            'dambulla': 'assets/Markets/Dambulla/d-12-22.jpg',
-            'nuwaraeliya': 'assets/Markets/Nuwaraeliya/n-12-22.jpg',
-            'thambuttegama': 'assets/Markets/Thambuttegama/t-12-22.jpg',
-            'bandarawela': 'assets/Keppetipola/kep12-18.jpg',
-            'keppetipola': 'assets/Markets/Keppetipola/k-12-22.jpg'
-        };
-
-        priceDataMap[yesterday] = {
-            'dambulla': 'assets/Markets/Dambulla/d-12-21.jpg',
-            'nuwaraeliya': 'assets/Markets/Nuwaraeliya/n-12-21.jpg',
-            'thambuttegama': 'assets/Markets/Thambuttegama/t-12-21.jpg',
-            'bandarawela': 'assets/Keppetipola/kep12-18.jpg',
-            'keppetipola': 'assets/Markets/Keppetipola/k-12-21.jpg'
-        };
-
-        priceDataMap[day2] = {
-           'dambulla': 'assets/Markets/Dambulla/d-12-20.jpg',
-            'nuwaraeliya': 'assets/Markets/Nuwaraeliya/n-12-20.jpg',
-            'thambuttegama': 'assets/Markets/Thambuttegama/t-12-20.jpg',
-            'bandarawela': 'assets/Keppetipola/kep12-18.jpg',
-            'keppetipola': 'assets/Markets/Keppetipola/k-12-20.jpg'
-        };
-
-        priceDataMap[day4] = { 'dambulla': 'https://images.unsplash.com/photo-1585561817730-81765c3b9b33?auto=format&fit=crop&w=600&q=80' };
-        priceDataMap[day10] = { 'dambulla': 'https://images.unsplash.com/photo-1585561817730-81765c3b9b33?auto=format&fit=crop&w=600&q=80' };
+        
+        try {
+            const response = await fetch('data/prices.json', { cache: 'no-cache' });
+            if (!response.ok) throw new Error('Failed to load prices.json');
+            
+            const data = await response.json();
+            if (!data.marketPrices) return;
+            
+            const today = getDateStr(0);
+            const yesterday = getDateStr(1);
+            const day2 = getDateStr(2);
+            const day4 = getDateStr(4);
+            const day10 = getDateStr(10);
+            
+            // Map the JSON data to date keys
+            if (data.marketPrices.today) priceDataMap[today] = data.marketPrices.today;
+            if (data.marketPrices.yesterday) priceDataMap[yesterday] = data.marketPrices.yesterday;
+            if (data.marketPrices.day2) priceDataMap[day2] = data.marketPrices.day2;
+            if (data.marketPrices.day4) priceDataMap[day4] = data.marketPrices.day4;
+            if (data.marketPrices.day10) priceDataMap[day10] = data.marketPrices.day10;
+            
+        } catch (error) {
+            console.warn('Could not load market data from prices.json:', error);
+            // Fallback to empty map - app will still work
+        }
     },
 
     updateDynamicPrices: () => {
