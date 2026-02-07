@@ -7,14 +7,16 @@
     <title>VeggiePrice - Sri Lankan Wholesale Market Prices</title>
 
     <!-- Primary SEO meta -->
-    <meta name="description" content="VeggiePrice provides daily wholesale vegetable prices from major Sri Lankan markets (Dambulla, Nuwara Eliya, Pettah). Updated daily to help farmers and buyers make informed decisions.">
+    <meta name="description"
+        content="VeggiePrice provides daily wholesale vegetable prices from major Sri Lankan markets (Dambulla, Nuwara Eliya, Pettah). Updated daily to help farmers and buyers make informed decisions.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://veggieprice.example.org/">
 
     <!-- Open Graph / Social -->
     <meta property="og:site_name" content="VeggiePrice">
     <meta property="og:title" content="VeggiePrice - Sri Lankan Wholesale Market Prices">
-    <meta property="og:description" content="Daily wholesale vegetable prices from major Sri Lankan markets. Updated daily.">
+    <meta property="og:description"
+        content="Daily wholesale vegetable prices from major Sri Lankan markets. Updated daily.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/imgs/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -58,11 +60,8 @@
     <!-- Floating Background Layer -->
     <div id="floating-container"></div>
 
-    <!-- Mobile Floating Emoji Button (visible on small screens) -->
-    <button id="emoji-toggle-mobile" aria-pressed="true" title="Emoji fun" onclick="emojiController.handleClick(event)"
-        class="md:hidden fixed bottom-6 right-4 z-50 w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
-        <span class="text-2xl" aria-hidden="true">🥕</span>
-    </button>
+    <!-- Mobile Floating Emoji Button (Hidden: Moved to Bottom Nav) -->
+    <!-- <button id="emoji-toggle-mobile" ... > ... </button> -->
 
     <!-- === TELEGRAM-STYLE EMOJI INTERACTION SECTION === -->
 
@@ -88,7 +87,7 @@
 
 
     <!-- Navigation -->
-    <nav
+    <nav id="main-top-nav"
         class="sticky top-0 z-40 relative border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div id="brand-logo-container" class="flex items-center space-x-2 cursor-pointer group"
@@ -118,38 +117,32 @@
                         class="ml-2 rounded-full transition transform hover:scale-105 flex items-center justify-center text-sm"
                         style="width:40px;height:40px;background:#fff;border:0;padding:0;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
                         <span class="rounded-full bg-orange-100 p-2 carrot-emoji" aria-hidden="true">🥕</span>
-                    </button>
+                        <!-- Hamburger Menu Toggle (Hidden: Replaced by Bottom Nav) -->
+                        <!-- 
+                <button class="md:hidden text-gray-600 focus:outline-none ml-2 p-2 hover:bg-gray-100 rounded-lg transition"
+                            onclick="app.toggleMobileMenu()">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button> 
+                -->
                 </div>
-
-                <button
-                    class="md:hidden text-gray-600 focus:outline-none ml-2 p-2 hover:bg-gray-100 rounded-lg transition"
-                    onclick="app.toggleMobileMenu()">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
             </div>
-        </div>
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu"
-            class="hidden bg-white/95 backdrop-blur-md md:hidden pb-4 px-4 transition-all border-t border-gray-100 shadow-lg absolute w-full left-0">
-            <a href="#" onclick="app.goHome(); app.toggleMobileMenu()"
-                class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
-                data-i18n="nav_home">Home</a>
-            <a href="#" onclick="app.scrollToSection('markets'); app.toggleMobileMenu()"
-                class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
-                data-i18n="nav_markets">Markets</a>
-            <a href="#" onclick="app.toggleAbout(); app.toggleMobileMenu()"
-                class="block py-4 text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_about">About</a>
-            <button onclick="emojiController.handleClick(event); app.toggleMobileMenu()"
-                class="w-full text-left py-4 text-gray-600 hover:text-green-600 font-medium flex items-center gap-3">
-                <span class="bg-orange-100 p-2 rounded-full">🥕</span> Emoji Fun
-            </button>
-        </div>
+            <!-- Mobile Menu Dropdown (Hidden) -->
+            <!-- <div id="mobile-menu"
+                class="hidden bg-white/95 backdrop-blur-md md:hidden pb-4 px-4 transition-all border-t border-gray-100 shadow-lg absolute w-full left-0 top-[60px]">
+                <a href="#" onclick="app.goHome(); app.toggleMobileMenu()"
+                    class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
+                    data-i18n="nav_home">Home</a>
+                <a href="#" onclick="app.scrollToSection('markets'); app.toggleMobileMenu()"
+                    class="block py-4 text-gray-600 hover:text-green-600 border-b border-gray-50 font-medium"
+                    data-i18n="nav_markets">Markets</a>
+                <a href="#" onclick="app.toggleAbout(); app.toggleMobileMenu()"
+                    class="block py-4 text-gray-600 hover:text-green-600 font-medium" data-i18n="nav_about">About</a>
+                <button onclick="emojiController.handleClick(event); app.toggleMobileMenu()"
+                    class="w-full text-left py-4 text-gray-600 hover:text-green-600 font-medium flex items-center gap-3">
+                    <span class="bg-orange-100 p-2 rounded-full">🥕</span> Emoji Fun
+                </button>
+            </div> -->
     </nav>
-
-    <!-- Mobile Page Title Bar (Below top nav) -->
-    <div id="mobile-page-title" class="hidden md:hidden fixed top-[55px] left-0 right-0 bg-white border-b border-gray-100 h-12 flex items-center px-4 z-40 transition-all duration-300">
-        <h2 id="page-title-text" class="text-base font-bold text-gray-800">Home</h2>
-    </div>
 
     <!-- Main Content Area -->
     <main class="flex-grow relative z-10">
@@ -321,7 +314,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 items-start justify-items-center"
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 justify-items-center"
                         id="market-grid">
                         <!-- Market Cards injected by JS -->
                     </div>
@@ -332,7 +325,7 @@
             <div class="py-16 bg-white">
                 <div class="container mx-auto px-6 pl-4 md:pl-24">
                     <div id="nature-section"
-                        class="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl h-[450px] group">
+                        class="relative w-full rounded-[2.5rem] overflow-hidden shadow-2xl h-[350px] md:h-[450px] group">
                         <div class="absolute inset-0 z-0">
                             <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1920&auto=format&fit=crop"
                                 class="w-full h-full object-cover animate-slow-zoom" alt="Nature Background">
@@ -366,7 +359,7 @@
         <!-- View 2: Specific Market Details -->
         <section id="view-market" class="hidden fade-in container mx-auto px-6 pl-4 md:pl-24 py-10">
             <!-- Breadcrumb / Back Button -->
-            <div class="mb-8 flex items-center">
+            <div class="mb-4 md:mb-8 flex items-center">
                 <button onclick="app.goHome()"
                     class="flex items-center text-gray-500 hover:text-green-600 font-medium transition bg-white/80 backdrop-blur-sm px-5 py-2.5 rounded-full shadow-sm border border-gray-200 hover:border-green-100 group">
                     <i
@@ -384,13 +377,15 @@
                 <img id="detail-market-img" src="" alt="Market"
                     class="w-10 h-10 md:w-20 md:h-20 object-cover rounded-md md:rounded-xl border-2 border-gray-100 shadow-none md:shadow-sm z-10">
                 <div class="text-center md:text-left z-10">
-                    <h2 id="detail-market-name" class="text-base md:text-2xl font-bold text-gray-900 mb-0 md:mb-1">Market Name</h2>
+                    <h2 id="detail-market-name" class="text-base md:text-2xl font-bold text-gray-900 mb-0 md:mb-1">
+                        Market Name</h2>
                     <p
                         class="text-gray-500 text-xs md:text-sm font-medium flex items-center justify-center md:justify-start bg-gray-50 inline-block px-2 py-0.5 md:px-3 md:py-1 rounded-md md:rounded-lg">
                         <i class="fa-solid fa-location-dot text-red-400 mr-2"></i><span
                             id="detail-market-loc">Location</span>
                     </p>
-                    <p class="text-xs md:text-sm text-gray-400 mt-3 md:mt-4 max-w-md leading-relaxed" data-i18n="market_desc">Browse the
+                    <p class="text-xs md:text-sm text-gray-400 mt-3 md:mt-4 max-w-md leading-relaxed"
+                        data-i18n="market_desc">Browse the
                         latest wholesale price lists below.</p>
                 </div>
             </div>
@@ -407,7 +402,8 @@
                         class="text-xs font-bold bg-green-50 text-green-700 px-4 py-2 rounded-full border border-green-100 shadow-sm"
                         data-i18n="last_3_days">Last 3 Days</span>
                 </div>
-                <div id="recent-prices-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+                <div id="recent-prices-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+                </div>
                 <!-- Note: no-recent-msg logic is handled by JS now -->
             </div>
 
@@ -635,37 +631,45 @@
         </div>
     </div>
 
-    <!-- Mobile Bottom Navigation Bar -->
-    <nav id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 md:hidden bg-white border-t border-gray-200 shadow-2xl z-50">
-        <div class="flex items-center justify-around h-16 px-2">
-            <!-- Home -->
-            <button onclick="app.goHome()" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Home" role="tab" aria-label="Home">
-                <i class="fa-solid fa-home text-xl text-gray-600 group-hover:text-green-600 transition"></i>
-                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Home</span>
-            </button>
+    <!-- Mobile Bottom Navigation Bar (Cricbuzz Style) -->
+    <nav id="mobile-bottom-nav"
+        class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 flex justify-around items-center h-[60px] z-[9999] px-2 pb-1 safe-area-bottom">
 
-            <!-- Markets -->
-            <button onclick="app.scrollToSection('markets')" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Markets" role="tab" aria-label="Markets">
-                <i class="fa-solid fa-bag-shopping text-xl text-gray-600 group-hover:text-green-600 transition"></i>
-                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Markets</span>
-            </button>
+        <!-- Home -->
+        <button onclick="app.goHome()"
+            class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-green-700 active:text-green-700 transition group focus:outline-none">
+            <i class="fa-solid fa-house text-lg mb-1 group-hover:scale-110 transition-transform"></i>
+            <span class="text-[10px] font-medium" data-i18n="nav_home">Home</span>
+        </button>
 
-            <!-- Fun (Emoji) -->
-            <button onclick="emojiController.handleClick(event)" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Emoji Fun" role="tab" aria-label="Emoji Fun">
-                <span class="text-xl" aria-hidden="true">🥕</span>
-                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Fun</span>
-            </button>
+        <!-- Markets -->
+        <button onclick="app.scrollToSection('markets')"
+            class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-green-700 active:text-green-700 transition group focus:outline-none">
+            <i class="fa-solid fa-store text-lg mb-1 group-hover:scale-110 transition-transform"></i>
+            <span class="text-[10px] font-medium" data-i18n="nav_markets">Markets</span>
+        </button>
 
-            <!-- About -->
-            <button onclick="app.toggleAbout()" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="About" role="tab" aria-label="About">
-                <i class="fa-solid fa-circle-info text-xl text-gray-600 group-hover:text-green-600 transition"></i>
-                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">About</span>
-            </button>
-        </div>
+        <!-- Emoji/Fun (Central Highlight) -->
+        <button onclick="emojiController.handleClick(event)"
+            class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-orange-600 active:text-orange-600 transition group focus:outline-none">
+            <div class="relative">
+                <i
+                    class="fa-solid fa-carrot text-xl mb-1 group-hover:scale-125 transition-transform text-orange-500"></i>
+            </div>
+            <span class="text-[10px] font-medium">Fun</span>
+        </button>
+
+        <!-- About -->
+        <button onclick="app.toggleAbout()"
+            class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-green-700 active:text-green-700 transition group focus:outline-none">
+            <i class="fa-solid fa-circle-info text-lg mb-1 group-hover:scale-110 transition-transform"></i>
+            <span class="text-[10px] font-medium" data-i18n="nav_about">About</span>
+        </button>
     </nav>
 
     <!-- External JavaScript -->
     <script src="js/app.js"></script>
+
 
 </body>
 
