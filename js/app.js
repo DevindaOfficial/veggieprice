@@ -295,6 +295,23 @@ const app = {
     adviceInterval: null,
     adviceIndex: 0,
 
+    updatePageTitle: (titleKey) => {
+        const t = translations[app.currentLang];
+        const titleEl = document.getElementById('page-title-text');
+        const pageBar = document.getElementById('mobile-page-title');
+        
+        if (!titleEl || !pageBar) return;
+
+        const title = t[titleKey] || titleKey;
+        titleEl.textContent = title;
+        pageBar.classList.remove('hidden');
+    },
+
+    hidePageTitle: () => {
+        const pageBar = document.getElementById('mobile-page-title');
+        if (pageBar) pageBar.classList.add('hidden');
+    },
+
     init: () => {
         app.generateDemoData();
         app.renderMarkets();
@@ -307,6 +324,7 @@ const app = {
                 app.showMarket(state.id, true); // true = restoring
             } else {
                 // Default Home View
+                app.updatePageTitle('nav_home');
                 // Restore Home Scroll immediately if on home
                 const savedScroll = sessionStorage.getItem('vp_home_scroll');
                 if (savedScroll) {
@@ -315,6 +333,8 @@ const app = {
                 }
             }
         } else {
+            // Default to Home title
+            app.updatePageTitle('nav_home');
             // Check URL params fallback
             const urlParams = new URLSearchParams(window.location.search);
             const marketParam = urlParams.get('market');
@@ -436,6 +456,13 @@ const app = {
         emojiInteraction.init();
         app.startNatureCarousel();
 
+        // Update page title with new language
+        const pageBar = document.getElementById('mobile-page-title');
+        if (pageBar && !pageBar.classList.contains('hidden')) {
+            const currentView = document.querySelector('#view-market:not(.hidden)') ? 'nav_markets' : 'nav_home';
+            app.updatePageTitle(currentView);
+        }
+
         if (!document.getElementById('view-market').classList.contains('hidden')) {
             const currentMarketName = document.getElementById('detail-market-name').dataset.id;
             if (currentMarketName) app.showMarket(currentMarketName, true); // true keeps us on market view
@@ -487,6 +514,9 @@ const app = {
         // Update State
         sessionStorage.setItem('vp_view_state', JSON.stringify({ view: 'home' }));
 
+        // Update page title
+        app.updatePageTitle('nav_home');
+
         // Restore Home Scroll
         const savedScroll = sessionStorage.getItem('vp_home_scroll');
         if (savedScroll) {
@@ -505,6 +535,8 @@ const app = {
                 // Small delay to allow home rendering
                 setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
             } else {
+                // Hide page title when scrolling to section on home page
+                app.hidePageTitle();
                 el.scrollIntoView({ behavior: 'smooth' });
             }
         }
@@ -520,10 +552,14 @@ const app = {
         overlay.classList.toggle('hidden');
         const isNowOpen = !overlay.classList.contains('hidden');
         if (isNowOpen) {
+            // Show "About" in page title
+            app.updatePageTitle('nav_about');
             if (window.veggieHistory && typeof window.veggieHistory.pushViewState === 'function') {
                 window.veggieHistory.pushViewState('about', {}, '#about');
             }
         } else {
+            // Hide page title when closing About
+            app.hidePageTitle();
             // When user closes About via UI, pop the about history entry if present
             if (history.state && history.state.app === 'veggie' && history.state.view === 'about') {
                 history.back();
@@ -619,6 +655,9 @@ const app = {
 
         const name = app.currentLang === 'si' ? market.nameSi : market.name;
         const loc = app.currentLang === 'si' ? market.locationSi : market.location;
+
+        // Update page title with market name
+        app.updatePageTitle('nav_markets');
 
         const nameEl = document.getElementById('detail-market-name');
         nameEl.textContent = name;

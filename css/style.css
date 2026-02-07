@@ -576,6 +576,32 @@ i.fa-brands {
     }
 }
 
+/* === MOBILE PAGE TITLE BAR (Below top nav) === */
+#mobile-page-title {
+    animation: slideDown 0.3s ease;
+}
+
+#mobile-page-title.hidden {
+    display: none !important;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#page-title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* === MOBILE BOTTOM NAVIGATION BAR === */
 #mobile-bottom-nav {
     display: none;
@@ -681,11 +707,17 @@ i.fa-brands {
         padding-bottom: 80px;
     }
 
-    /* Fix gap between navbar and content */
+    /* Fix gap between navbar and content (account for page title bar) */
     #view-home,
     #view-market {
-        margin-top: 55px !important;
+        margin-top: 103px !important;
         padding-top: 0 !important;
+    }
+
+    /* Adjust for when page title is hidden */
+    #mobile-page-title.hidden ~ main #view-home,
+    #mobile-page-title.hidden ~ main #view-market {
+        margin-top: 55px !important;
     }
 
     /* Bring hero section higher - reduce top padding */
