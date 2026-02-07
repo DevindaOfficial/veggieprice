@@ -537,11 +537,87 @@ i.fa-brands {
 
     .produce-icon {
         font-size: 1.4rem;
+        opacity: 0 !important;
+    }
+
+    .produce-icon:hover {
+        opacity: 0.6 !important;
+    }
+
+    @keyframes floatUpMobile {
+        0% {
+            transform: translateY(110vh) translateX(0) rotate(0deg);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0.35;
+        }
+
+        33% {
+            transform: translateY(70vh) translateX(25px) rotate(10deg);
+        }
+
+        66% {
+            transform: translateY(30vh) translateX(-25px) rotate(-10deg);
+        }
+
+        90% {
+            opacity: 0.35;
+        }
+
+        100% {
+            transform: translateY(-20vh) translateX(0) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Apply reduced opacity animation on mobile */
+    #floating-container .produce-icon {
+        animation-name: floatUpMobile !important;
     }
 
     .falling-emoji,
     .boom-emoji {
         font-size: 22px;
+        opacity: 0.5 !important;
+    }
+
+    @keyframes fallDownMobile {
+        0% {
+            transform: translateY(-10vh) rotate(0deg);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes boomMobile {
+        0% {
+            transform: scale(0.6) rotate(0deg);
+            opacity: 0.4;
+        }
+
+        40% {
+            transform: scale(1.6) rotate(180deg);
+            opacity: 0.4;
+        }
+
+        100% {
+            transform: scale(2) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .falling-emoji {
+        animation-name: fallDownMobile !important;
+    }
+
+    .boom-emoji {
+        animation-name: boomMobile !important;
     }
 }
 
