@@ -575,6 +575,77 @@ i.fa-brands {
         opacity: 0;
     }
 }
+
+/* === MOBILE BOTTOM NAVIGATION BAR === */
+#mobile-bottom-nav {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    #mobile-bottom-nav {
+        display: flex;
+    }
+}
+
+#mobile-bottom-nav {
+    background: linear-gradient(to top, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.04), 0 -4px 20px rgba(0, 0, 0, 0.06);
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+#mobile-bottom-nav button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+#mobile-bottom-nav button:active {
+    transform: scale(0.95);
+}
+
+#mobile-bottom-nav button:hover {
+    background: rgba(220, 252, 231, 0.5) !important;
+}
+
+#mobile-bottom-nav button i {
+    color: #4b5563;
+    transition: color 0.3s ease;
+}
+
+#mobile-bottom-nav button:hover i {
+    color: #16a34a;
+}
+
+#mobile-bottom-nav button span {
+    color: #6b7280;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+#mobile-bottom-nav button:hover span {
+    color: #16a34a;
+}
+
+/* Active state styling (apply this if needed via JS) */
+#mobile-bottom-nav button.active {
+    background: rgba(220, 252, 231, 0.7);
+}
+
+#mobile-bottom-nav button.active i,
+#mobile-bottom-nav button.active span {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+/* === END MOBILE BOTTOM NAVIGATION BAR === */
+
 /* Market Icon Styling */
 .market-icon {
     width: 100%;
@@ -603,6 +674,11 @@ i.fa-brands {
     /* Fix navbar height */
     nav {
         height: 55px !important;
+    }
+
+    /* Add padding to bottom to avoid content overlap with bottom nav */
+    body {
+        padding-bottom: 80px;
     }
 
     /* Fix gap between navbar and content */

@@ -630,6 +630,35 @@
         </div>
     </div>
 
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 md:hidden bg-white border-t border-gray-200 shadow-2xl z-50">
+        <div class="flex items-center justify-around h-16 px-2">
+            <!-- Home -->
+            <button onclick="app.goHome()" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Home" role="tab" aria-label="Home">
+                <i class="fa-solid fa-home text-xl text-gray-600 group-hover:text-green-600 transition"></i>
+                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Home</span>
+            </button>
+
+            <!-- Markets -->
+            <button onclick="app.scrollToSection('markets')" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Markets" role="tab" aria-label="Markets">
+                <i class="fa-solid fa-bag-shopping text-xl text-gray-600 group-hover:text-green-600 transition"></i>
+                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Markets</span>
+            </button>
+
+            <!-- Fun (Emoji) -->
+            <button onclick="emojiController.handleClick(event)" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="Emoji Fun" role="tab" aria-label="Emoji Fun">
+                <span class="text-xl" aria-hidden="true">🥕</span>
+                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">Fun</span>
+            </button>
+
+            <!-- About -->
+            <button onclick="app.toggleAbout()" class="flex flex-col items-center justify-center w-16 h-16 rounded-lg hover:bg-green-50 transition group" title="About" role="tab" aria-label="About">
+                <i class="fa-solid fa-circle-info text-xl text-gray-600 group-hover:text-green-600 transition"></i>
+                <span class="text-xs font-semibold text-gray-600 group-hover:text-green-600 mt-1 transition">About</span>
+            </button>
+        </div>
+    </nav>
+
     <!-- External JavaScript -->
     <script src="js/app.js"></script>
 
