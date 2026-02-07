@@ -693,6 +693,7 @@ i.fa-brands {
 
     .legend-box {
         bottom: 75px !important;
+        display: none !important;
     }
 
     /* Ensure content avoids bottom nav */
