@@ -254,6 +254,7 @@ body.lang-si .text-xs {
         right: auto;
         left: 16px;
         bottom: 75px;
+        display: none !important;
     }
 }
 
