@@ -295,6 +295,23 @@ const app = {
     adviceInterval: null,
     adviceIndex: 0,
 
+    updatePageTitle: (titleKey) => {
+        const t = translations[app.currentLang];
+        const titleEl = document.getElementById('page-title-text');
+        const pageBar = document.getElementById('mobile-page-title');
+        
+        if (!titleEl || !pageBar) return;
+
+        const title = t[titleKey] || titleKey;
+        titleEl.textContent = title;
+        pageBar.classList.remove('hidden');
+    },
+
+    hidePageTitle: () => {
+        const pageBar = document.getElementById('mobile-page-title');
+        if (pageBar) pageBar.classList.add('hidden');
+    },
+
     init: () => {
         app.generateDemoData();
         app.renderMarkets();
