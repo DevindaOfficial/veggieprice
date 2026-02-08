@@ -321,6 +321,10 @@ body.lang-si .text-xs {
         width: 24px;
         height: 24px;
     }
+
+    .market-card .market-action-mobile button i {
+        color: white !important;
+    }
 }
 
 /* Nature Section Animations */
