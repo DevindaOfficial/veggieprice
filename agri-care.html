@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Care - VeggiePrice</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Agricultural care guide for vegetables. Learn about diseases and organic fertilizers.">
+    <meta name="robots" content="index, follow">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/imgs/favicon (3).png">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/agri-care.css">
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Loader (reuse from main page) -->
+    <div id="loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading Agri Care…</p>
+    </div>
+
+    <!-- Navigation (same as main page) -->
+    <nav id="main-top-nav"
+        class="sticky top-0 z-40 relative border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer group" onclick="window.location.href='index.html'">
+                <i class="fa-solid fa-carrot text-orange-500 text-3xl group-hover:scale-110 transition-transform duration-300"></i>
+                <h1 class="text-2xl font-bold tracking-wide text-green-800">VeggiePrice</h1>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Language Toggle Button -->
+                <button onclick="toggleLanguage()"
+                    class="bg-gray-50 hover:bg-gray-100 px-4 py-1.5 rounded-full text-xs font-bold border border-gray-200 text-gray-700 hover:text-green-700 hover:border-green-200 transition-all shadow-sm flex items-center gap-2">
+                    <span id="lang-icon" class="text-base">🇱🇰</span> <span id="lang-text"
+                        class="tracking-wide">SINHALA</span>
+                </button>
+
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-600">
+                    <a href="index.html" class="hover:text-green-600 transition">Home</a>
+                    <a href="index.html#markets" class="hover:text-green-600 transition">Markets</a>
+                    <a href="#" class="text-green-600 font-bold">Agri Care</a>
+                    <a href="index.html" class="hover:text-green-600 transition">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Agri Care Page -->
+    <div id="agri-care-page">
+        
+        <!-- Header Section -->
+        <div class="agri-care-header">
+            <h1 data-i18n="agri_care_title">🌾 Agricultural Care Guide</h1>
+            <p data-i18n="agri_care_subtitle">Learn about vegetable diseases and organic fertilizers to keep your crops healthy</p>
+        </div>
+
+        <!-- Vegetables Container -->
+        <div class="vegetables-container">
+            <div id="vegetables-grid" class="vegetables-grid">
+                <!-- Vegetables will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Disease Modal -->
+    <div id="disease-modal" class="disease-modal">
+        <div class="disease-modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-veggie-name">Vegetable Name</h2>
+                </div>
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <span id="modal-veggie-icon" class="veggie-icon-large">🍅</span>
+                    <button class="close-modal-btn" onclick="agriCare.closeModal()">✕</button>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div id="diseases-container">
+                    <!-- Diseases will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Home Button -->
+    <button class="back-to-home-btn" onclick="window.location.href='index.html'" title="Back to Home">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <!-- External Scripts -->
+    <script src="js/agri-care.js"></script>
+
+    <!-- Simple language toggle for this page -->
+    <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang || 'en';
+            const newLang = currentLang === 'en' ? 'si' : 'en';
+            
+            document.documentElement.lang = newLang;
+            document.body.classList.toggle('lang-si');
+            
+            // Update button text
+            const iconEl = document.getElementById('lang-icon');
+            const textEl = document.getElementById('lang-text');
+            
+            if (newLang === 'si') {
+                iconEl.textContent = '🇱🇰';
+                textEl.textContent = 'සිංහල';
+            } else {
+                iconEl.textContent = '🇱🇰';
+                textEl.textContent = 'ENGLISH';
+            }
+            
+            // Store preference
+            localStorage.setItem('vp_language', newLang);
+        }
+        
+        // Load language preference
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('vp_language') || 'en';
+            if (savedLang === 'si') {
+                document.body.classList.add('lang-si');
+                document.getElementById('lang-text').textContent = 'සිංහල';
+            }
+        });
+    </script>
+</body>
+
+</html>

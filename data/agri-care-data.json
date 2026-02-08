@@ -1,0 +1,302 @@
+{
+  "vegetables": [
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "icon": "🍅",
+      "image": "assets/imgs/tomato.jpg",
+      "diseases": [
+        {
+          "name": "Early Blight",
+          "description": "Brown spots on lower leaves spreading upwards",
+          "fertilizers": [
+            "Worm Compost",
+            "Neem Cake",
+            "Trichoderma-based Compost"
+          ]
+        },
+        {
+          "name": "Late Blight",
+          "description": "Water-soaked spots on leaves and fruits, white mold on undersides",
+          "fertilizers": [
+            "Copper-enriched Compost",
+            "Potassium-rich Organic Matter",
+            "Bacterial Antagonist Compost"
+          ]
+        },
+        {
+          "name": "Fusarium Wilt",
+          "description": "Wilting starts from lower leaves, yellowing and death",
+          "fertilizers": [
+            "Bacillus-based Compost",
+            "Chitin-enriched Organic Matter",
+            "Beneficial Microbe Compost"
+          ]
+        },
+        {
+          "name": "Leaf Curl",
+          "description": "Curling and distortion of new leaves",
+          "fertilizers": [
+            "Neem Oil Compost",
+            "Wood Ash",
+            "Calcium-rich Organic Matter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carrot",
+      "name": "Carrot",
+      "icon": "🥕",
+      "image": "assets/imgs/carrot.jpg",
+      "diseases": [
+        {
+          "name": "Carrot Rust Fly",
+          "description": "Reddish-brown tunnels in roots and foliage wilting",
+          "fertilizers": [
+            "Worm Compost",
+            "Neem Seed Cake",
+            "Beneficial Insect Compost"
+          ]
+        },
+        {
+          "name": "Alternaria Leaf Blight",
+          "description": "Brown spots with concentric rings on leaves",
+          "fertilizers": [
+            "Trichoderma Compost",
+            "Aged Manure",
+            "Sulfur-based Organic Matter"
+          ]
+        },
+        {
+          "name": "Root Knot Nematode",
+          "description": "Galled roots and stunted growth",
+          "fertilizers": [
+            "Marigold Compost",
+            "Chitin-rich Organic Matter",
+            "Bacillus subtilis Based Compost"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cabbage",
+      "name": "Cabbage",
+      "icon": "🥬",
+      "image": "assets/imgs/cabbage.jpg",
+      "diseases": [
+        {
+          "name": "Clubroot",
+          "description": "Club-shaped root enlargements, wilting during warm days",
+          "fertilizers": [
+            "Lime-enriched Compost",
+            "Calcium Carbonate Organic Matter",
+            "Aged Animal Manure"
+          ]
+        },
+        {
+          "name": "Black Rot",
+          "description": "V-shaped yellow to brown lesions on leaves",
+          "fertilizers": [
+            "Copper Compost",
+            "Bacillus Subtilis Enriched Compost",
+            "Sulfur Dusted Organic Matter"
+          ]
+        },
+        {
+          "name": "Powdery Mildew",
+          "description": "White powder coating on leaves",
+          "fertilizers": [
+            "Sulfur-rich Compost",
+            "Potassium Bicarbonate Organic Matter",
+            "Aged Manure"
+          ]
+        },
+        {
+          "name": "Diamondback Moth",
+          "description": "Irregular holes in leaves and green droppings",
+          "fertilizers": [
+            "Neem Cake",
+            "Garlic-Chili Extract Compost",
+            "Beneficial Entomopathogenic Fungi"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "onion",
+      "name": "Onion",
+      "icon": "🧅",
+      "image": "assets/imgs/onion.jpg",
+      "diseases": [
+        {
+          "name": "Purple Blotch",
+          "description": "Purple lesions with concentric rings on leaves",
+          "fertilizers": [
+            "Potassium-rich Compost",
+            "Trichoderma-based Organic Matter",
+            "Aged Cow Dung"
+          ]
+        },
+        {
+          "name": "Fusarium Basal Rot",
+          "description": "Decay starting from the base of bulb",
+          "fertilizers": [
+            "Trichoderma Compost",
+            "Bacillus-enriched Organic Matter",
+            "Sulfur-based Compost"
+          ]
+        },
+        {
+          "name": "Onion Thrips",
+          "description": "Whitish streaks on leaves, distorted growth",
+          "fertilizers": [
+            "Neem Cake",
+            "Garlic-based Compost",
+            "Peppermint Oil Enriched Organic Matter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "potato",
+      "name": "Potato",
+      "icon": "🥔",
+      "image": "assets/imgs/potato.jpg",
+      "diseases": [
+        {
+          "name": "Late Blight",
+          "description": "Water-soaked spots on leaves and tubers, white mold on undersides",
+          "fertilizers": [
+            "Copper Compost",
+            "Potassium-rich Organic Matter",
+            "Bacillus-based Compost"
+          ]
+        },
+        {
+          "name": "Early Blight",
+          "description": "Brown spots with concentric rings, progressing upward",
+          "fertilizers": [
+            "Sulfur-rich Compost",
+            "Trichoderma Compost",
+            "Aged Manure"
+          ]
+        },
+        {
+          "name": "Potato Scab",
+          "description": "Corky lesions on tuber surface",
+          "fertilizers": [
+            "Sulfur-based Compost",
+            "Acidic Compost with Pine Needles",
+            "Bacillus subtilis Organic Matter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brinjal",
+      "name": "Brinjal (Eggplant)",
+      "icon": "🍆",
+      "image": "assets/imgs/brinjal.jpg",
+      "diseases": [
+        {
+          "name": "Leaf Spot",
+          "description": "Circular brown spots with concentric rings on leaves",
+          "fertilizers": [
+            "Trichoderma Compost",
+            "Copper-enriched Organic Matter",
+            "Aged Manure with Neem Residue"
+          ]
+        },
+        {
+          "name": "Shoot and Fruit Borer",
+          "description": "Holes in shoots and fruits with dark entry points",
+          "fertilizers": [
+            "Neem Cake",
+            "Beneficial Wasp Compost",
+            "Garlic Chili Extracte Organic Matter"
+          ]
+        },
+        {
+          "name": "Wilt",
+          "description": "Sudden wilting of shoots and progressive death",
+          "fertilizers": [
+            "Bacillus Subtilis Compost",
+            "Trichoderma-enriched Organic Matter",
+            "Calcium-rich Aged Manure"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pepper",
+      "name": "Bell Pepper",
+      "icon": "🫑",
+      "image": "assets/imgs/pepper.jpg",
+      "diseases": [
+        {
+          "name": "Anthracnose",
+          "description": "Circular lesions on fruits with concentric rings",
+          "fertilizers": [
+            "Copper Compost",
+            "Trichoderma-based Organic Matter",
+            "Sulfur-rich Aged Manure"
+          ]
+        },
+        {
+          "name": "Bacterial Spot",
+          "description": "Brown water-soaked spots on leaves and fruits",
+          "fertilizers": [
+            "Copper Sulfate Organic Matter",
+            "Bacillus-enriched Compost",
+            "Potassium-rich Aged Manure"
+          ]
+        },
+        {
+          "name": "Aphids",
+          "description": "Curled leaves, yellowing, and sticky residue",
+          "fertilizers": [
+            "Neem Oil Compost",
+            "Insecticidal Soap Compost",
+            "Ladybug-attracting Organic Matter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber",
+      "icon": "🥒",
+      "image": "assets/imgs/cucumber.jpg",
+      "diseases": [
+        {
+          "name": "Powdery Mildew",
+          "description": "White powder-like coating on leaves",
+          "fertilizers": [
+            "Sulfur Compost",
+            "Potassium Bicarbonate Organic Matter",
+            "Baking Soda Enhanced Aged Manure"
+          ]
+        },
+        {
+          "name": "Downy Mildew",
+          "description": "Yellow patches on leaves with gray mold on undersides",
+          "fertilizers": [
+            "Copper Compost",
+            "Trichoderma-based Organic Matter",
+            "Bacillus Subtilis Enriched Manure"
+          ]
+        },
+        {
+          "name": "Angular Leaf Spot",
+          "description": "Angular brown lesions on leaves with yellow halos",
+          "fertilizers": [
+            "Copper-enriched Compost",
+            "Aged Manure with Garlic Extract",
+            "Sulfur-based Organic Matter"
+          ]
+        }
+      ]
+    }
+  ]
+}
