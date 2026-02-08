@@ -3,12 +3,15 @@
     {
       "id": "tomato",
       "name": "Tomato",
+      "nameSi": "තක්කාලි",
       "icon": "🍅",
       "image": "assets/imgs/tomato.jpg",
       "diseases": [
         {
           "name": "Early Blight",
+          "nameSi": "මුල්‍ය පිනි අසනීම",
           "description": "Brown spots on lower leaves spreading upwards",
+          "descriptionSi": "පහළ කොළවල් තුළ දුඹුරු ලප් ඉහළට පැතිර යෑම",
           "fertilizers": [
             "Worm Compost",
             "Neem Cake",

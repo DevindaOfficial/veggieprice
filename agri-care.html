@@ -33,34 +33,28 @@
 
 <body class="flex flex-col min-h-screen">
 
-    <!-- Loader (reuse from main page) -->
-    <div id="loader" style="display: none;">
-        <div class="spinner"></div>
-        <p>Loading Agri Care…</p>
-    </div>
-
     <!-- Navigation (same as main page) -->
     <nav id="main-top-nav"
         class="sticky top-0 z-40 relative border-b border-gray-200 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2 cursor-pointer group" onclick="window.location.href='index.html'">
+            <div class="flex items-center space-x-2 cursor-pointer group" onclick="agriCare.goToHome()">
                 <i class="fa-solid fa-carrot text-orange-500 text-3xl group-hover:scale-110 transition-transform duration-300"></i>
                 <h1 class="text-2xl font-bold tracking-wide text-green-800">VeggiePrice</h1>
             </div>
 
             <div class="flex items-center gap-4">
                 <!-- Language Toggle Button -->
-                <button onclick="toggleLanguage()"
+                <button onclick="agriCare.toggleLanguage()"
                     class="bg-gray-50 hover:bg-gray-100 px-4 py-1.5 rounded-full text-xs font-bold border border-gray-200 text-gray-700 hover:text-green-700 hover:border-green-200 transition-all shadow-sm flex items-center gap-2">
                     <span id="lang-icon" class="text-base">🇱🇰</span> <span id="lang-text"
-                        class="tracking-wide">SINHALA</span>
+                        class="tracking-wide">ENGLISH</span>
                 </button>
 
                 <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-600">
-                    <a href="index.html" class="hover:text-green-600 transition">Home</a>
+                    <button onclick="agriCare.goToHome()" class="hover:text-green-600 transition" style="background: none; border: none; cursor: pointer; padding: 0; font-size: inherit;">Home</button>
                     <a href="index.html#markets" class="hover:text-green-600 transition">Markets</a>
-                    <a href="#" class="text-green-600 font-bold">Agri Care</a>
-                    <a href="index.html" class="hover:text-green-600 transition">About</a>
+                    <a href="agri-care.html" class="text-green-600 font-bold">Agri Care</a>
+                    <a href="index.html#about" class="hover:text-green-600 transition">About</a>
                 </div>
             </div>
         </div>
@@ -71,8 +65,8 @@
         
         <!-- Header Section -->
         <div class="agri-care-header">
-            <h1 data-i18n="agri_care_title">🌾 Agricultural Care Guide</h1>
-            <p data-i18n="agri_care_subtitle">Learn about vegetable diseases and organic fertilizers to keep your crops healthy</p>
+            <h1>🌾 <span data-en="Agricultural Care Guide" data-si="කෘෂිකර්ම සම්පූර්ණ මාර්ගෝපදේශ">Agricultural Care Guide</span></h1>
+            <p data-en="Learn about vegetable diseases and organic fertilizers to keep your crops healthy" data-si="ඔබේ බෝවන් සුස්ථ තබා ගැනීමට පර්යේෂණ රෝග සහ ඉතුරු කිමි පිළිබඳ ඉගෙන ගන්න">Learn about vegetable diseases and organic fertilizers to keep your crops healthy</p>
         </div>
 
         <!-- Vegetables Container -->
@@ -83,71 +77,13 @@
         </div>
     </div>
 
-    <!-- Disease Modal -->
-    <div id="disease-modal" class="disease-modal">
-        <div class="disease-modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <div>
-                    <h2 id="modal-veggie-name">Vegetable Name</h2>
-                </div>
-                <div style="display: flex; gap: 15px; align-items: center;">
-                    <span id="modal-veggie-icon" class="veggie-icon-large">🍅</span>
-                    <button class="close-modal-btn" onclick="agriCare.closeModal()">✕</button>
-                </div>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <div id="diseases-container">
-                    <!-- Diseases will be loaded here -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back to Home Button -->
-    <button class="back-to-home-btn" onclick="window.location.href='index.html'" title="Back to Home">
+    <!-- Back to Home Button (Mobile) -->
+    <button class="back-to-home-btn" onclick="agriCare.goToHome()" title="Back to Home">
         <i class="fa-solid fa-arrow-left"></i>
     </button>
 
     <!-- External Scripts -->
     <script src="js/agri-care.js"></script>
-
-    <!-- Simple language toggle for this page -->
-    <script>
-        function toggleLanguage() {
-            const currentLang = document.documentElement.lang || 'en';
-            const newLang = currentLang === 'en' ? 'si' : 'en';
-            
-            document.documentElement.lang = newLang;
-            document.body.classList.toggle('lang-si');
-            
-            // Update button text
-            const iconEl = document.getElementById('lang-icon');
-            const textEl = document.getElementById('lang-text');
-            
-            if (newLang === 'si') {
-                iconEl.textContent = '🇱🇰';
-                textEl.textContent = 'සිංහල';
-            } else {
-                iconEl.textContent = '🇱🇰';
-                textEl.textContent = 'ENGLISH';
-            }
-            
-            // Store preference
-            localStorage.setItem('vp_language', newLang);
-        }
-        
-        // Load language preference
-        window.addEventListener('load', () => {
-            const savedLang = localStorage.getItem('vp_language') || 'en';
-            if (savedLang === 'si') {
-                document.body.classList.add('lang-si');
-                document.getElementById('lang-text').textContent = 'සිංහල';
-            }
-        });
-    </script>
 </body>
 
 </html>
