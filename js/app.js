@@ -187,7 +187,21 @@ const translations = {
         item_Brinjal: "Brinjal",
         item_Lime: "Lime",
         item_Papaya: "Papaya",
-        item_LeafyGreens: "Leafy Greens"
+        item_LeafyGreens: "Leafy Greens",
+
+        // Vegetable Care Guide
+        care_guide_title: "Vegetable Care Guide",
+        care_guide_subtitle: "Learn about common diseases, symptoms, and organic fertilizers for healthy vegetables",
+        select_vegetable: "Select a Vegetable",
+        diseases: "Diseases",
+        symptoms: "Symptoms",
+        organic_fertilizers: "Organic Fertilizers",
+        fertilizer_benefits: "Benefits",
+        click_to_see: "Click to see diseases",
+        click_disease: "Click disease to see treatments",
+        recommended_fertilizers: "Recommended Organic Fertilizers",
+        prevention_tips: "Prevention Tips",
+        treatment_methods: "Treatment Methods"
     },
     si: {
         nav_home: "මුල් පිටුව",
@@ -271,9 +285,21 @@ const translations = {
         item_Brinjal: "වම්බටු",
         item_Lime: " දෙහි",
         item_Papaya: "පැපොල්",
-        item_LeafyGreens: "පලා වර්ග"
-    }
-};
+        item_LeafyGreens: "පලා වර්ග",
+
+        // Vegetable Care Guide
+        care_guide_title: "එළවළු පෙර්බඩු නිර්දේශ",
+        care_guide_subtitle: "සුස්ථ එළවළු සඳහා සාමාන්‍ය රෝගයන්, රෝග ලක්ෂණ සහ කාබනිකව පෝෂිත ගස් ඉගෙන ගන්න",
+        select_vegetable: "එළවළුවක් තෝරන්න",
+        diseases: "රෝගයන්",
+        symptoms: "රෝග ලක්ෂණ",
+        organic_fertilizers: "කාබනිකව පෝෂිත ගස්",
+        fertilizer_benefits: "ප්‍රතිලාභ",
+        click_to_see: "രോഗുകാണാൻ ക്ലിക്ക്",
+        click_disease: "চিকিৎসা දেখতে রোগে ক্লিক করুন",
+        recommended_fertilizers: "නිර්දේශිත කාබනිකව පෝෂිත ගස්",
+        prevention_tips: "වැළැක්වීමේ ඉඟි",
+        treatment_methods: "ප්‍රතිකාර ක්‍රම"
 
 const natureAdvice = {
     en: ["Reduce plastic usage in markets.", "Support organic farming practices.", "Keep our water sources clean.", "Minimize food waste.", "Plant a tree for every harvest."],
@@ -287,6 +313,204 @@ const markets = [
     { id: 'bandarawela', name: 'Bandarawela', nameSi: 'බණ්ඩාරවෙල', location: 'Badulla', locationSi: 'බදුල්ල', image: 'assets//imgs//b icon.png' },
     { id: 'keppetipola', name: 'Keppetipola DEC', nameSi: 'කැප්පෙටිපොල ආර්ථික මධ්‍යස්ථානය', location: 'Keppetipola', locationSi: 'කැප්පෙටිපොල', image: 'assets//imgs//k icon.png' }
 ];
+
+// --- VEGETABLE CARE GUIDE DATA (Diseases & Organic Fertilizers) ---
+const vegetableCareGuide = {
+    tomato: {
+        en: { name: 'Tomato', icon: '🍅' },
+        si: { name: 'තක්කාලි', icon: '🍅' },
+        diseases: [
+            {
+                en: { name: 'Leaf Spot', symptoms: 'Brown/yellow spots on leaves, yellowing' },
+                si: { name: 'පත්‍ර තිබුඩු', symptoms: 'පත්‍රවලට දුඹුරු/කහ පැහැ තිබුඩු' }
+            },
+            {
+                en: { name: 'Early Blight', symptoms: 'Lower leaves turn yellow, brown spots appear' },
+                si: { name: 'මුල් ගිලීම', symptoms: 'පහළ පත්‍ර කහ පැහැ වෙයි, දුඹුරු තිබුඩු' }
+            },
+            {
+                en: { name: 'Powdery Mildew', symptoms: 'White powder on leaves, stunted growth' },
+                si: { name: 'කුඩු පැහැ ශෙනුන්', symptoms: 'පත්‍රවල සුදු කුඩු, අවුරුද්ධ වර්ධනය' }
+            }
+        ]
+    },
+    carrot: {
+        en: { name: 'Carrot', icon: '🥕' },
+        si: { name: 'කැරට්', icon: '🥕' },
+        diseases: [
+            {
+                en: { name: 'Flea Beetles', symptoms: 'Tiny holes in leaves, yellowing' },
+                si: { name: 'කුඩු කෙටුම්', symptoms: 'පත්‍රවල කුඩු සිදුරු, කහ පැහැ වීම' }
+            },
+            {
+                en: { name: 'Root Rot', symptoms: 'Roots become soft and mushy, wilting' },
+                si: { name: 'මුල් කුණු', symptoms: 'මුල් සෙමෙන් දුර්වල වෙයි, නැතිවී යයි' }
+            },
+            {
+                en: { name: 'Leaf Spot', symptoms: 'Dark spots on foliage, defoliation' },
+                si: { name: 'පත්‍ර තිබුඩු', symptoms: 'කළු තිබුඩු පත්‍රවල, පත්‍ර ගිනී' }
+            }
+        ]
+    },
+    broccoli: {
+        en: { name: 'Broccoli', icon: '🥦' },
+        si: { name: 'බ්‍රොකලි', icon: '🥦' },
+        diseases: [
+            {
+                en: { name: 'Clubroot', symptoms: 'Swollen deformed roots, stunted growth' },
+                si: { name: 'මුල් පිළිබඳ රෝගය', symptoms: 'විෂ්කම්භ වූ මුල්, අවුරුද්ධ වර්ධනය' }
+            },
+            {
+                en: { name: 'Downy Mildew', symptoms: 'Yellow patches on leaves, white mold underneath' },
+                si: { name: 'ගිලි ශෙනුන්', symptoms: 'පත්‍রවල කහ ස්ථානයන්, පහළින් සුදු ශෙනුන්' }
+            },
+            {
+                en: { name: 'Black Rot', symptoms: 'Black veins on leaves, edge browning' },
+                si: { name: 'කළු කුණු', symptoms: 'কෙටුම්වල කළු නාඩි, කෙළවා දුඹුරු වීම' }
+            }
+        ]
+    },
+    chili: {
+        en: { name: 'Chili Pepper', icon: '🌶️' },
+        si: { name: 'මිරිස්', icon: '🌶️' },
+        diseases: [
+            {
+                en: { name: 'Anthracnose', symptoms: 'Dark sunken spots on fruits, premature dropping' },
+                si: { name: 'ඇන්තෝස්', symptoms: 'ගෙඩිවලට කළු සිදුරු, අකාල පතනය' }
+            },
+            {
+                en: { name: 'Bacterial Spot', symptoms: 'Water-soaked spots, yellow halos' },
+                si: { name: 'බැක්ටීරිය තිබුඩු', symptoms: 'ජල ශෝෂිත තිබුඩු, කහ හලෝ' }
+            },
+            {
+                en: { name: 'Whitefly Infestation', symptoms: 'Yellowing leaves, sticky residue, wilting' },
+                si: { name: 'සුදු පැණිගැටුම්', symptoms: 'කහ පත්‍ර, ස්ටිකි අවශේෂ, නැතිවීම' }
+            }
+        ]
+    },
+    onion: {
+        en: { name: 'Onion', icon: '🧅' },
+        si: { name: 'ලූනු', icon: '🧅' },
+        diseases: [
+            {
+                en: { name: 'Purple Blotch', symptoms: 'Purple/brown spots on leaves and stems' },
+                si: { name: 'දම්වල ලප්පු', symptoms: 'දම්වල/දුඹුරු ලප්පු පත්‍ර සහ කඩු' }
+            },
+            {
+                en: { name: 'Basal Rot', symptoms: 'Rotting at base, mushy appearance' },
+                si: { name: 'ඉතුරු කුණු', symptoms: 'පතුලින් කුණු ගැබෙයි, සිමිත පෙනුම' }
+            },
+            {
+                en: { name: 'Thrips Damage', symptoms: 'Silvery streaks on leaves, distorted growth' },
+                si: { name: 'තිරිස් හානිය', symptoms: 'පත්‍රවල ලිහිසි ඉරි, විකෘති වර්ධනය' }
+            }
+        ]
+    },
+    potato: {
+        en: { name: 'Potato', icon: '🥔' },
+        si: { name: 'අල', icon: '🥔' },
+        diseases: [
+            {
+                en: { name: 'Late Blight', symptoms: 'Water-soaked spots, white mold on undersides' },
+                si: { name: 'ප්‍රලම්බ ගිලීම', symptoms: 'ජල ශෝෂිත තිබුඩු, පහළින් සුදු ශෙනුන්' }
+            },
+            {
+                en: { name: 'Early Blight', symptoms: 'Target-like spots on leaves, stem damage' },
+                si: { name: 'මුල් ගිලීම', symptoms: 'ඉලක්කය හැඩැති තිබුඩු, කඩු හානිය' }
+            },
+            {
+                en: { name: 'Scab', symptoms: 'Corky brown spots on tubers, cracked skin' },
+                si: { name: 'ගිබුණු', symptoms: 'බීජ තුඩුවලට කිරුණු දුඹුරු ලප්පු' }
+            }
+        ]
+    },
+    spinach: {
+        en: { name: 'Spinach', icon: '🥬' },
+        si: { name: 'පෙතා', icon: '🥬' },
+        diseases: [
+            {
+                en: { name: 'Downy Mildew', symptoms: 'Yellow patches on upper surface, white mold below' },
+                si: { name: 'ගිලි ශෙනුන්', symptoms: 'ඉහළ මතුපිට කහ ස්ථානයන්, පහළින් සුදු ශෙනුන්' }
+            },
+            {
+                en: { name: 'Leaf Miners', symptoms: 'Wiggly trails in leaves, transparent patterns' },
+                si: { name: 'පත්‍ර ගුවන්නින්', symptoms: 'පත්‍රවල වක්‍ර මාර්ගයන්, ඼ස්වචක රටා' }
+            },
+            {
+                en: { name: 'Crown Rot', symptoms: 'Plants wilt suddenly, base becomes mushy' },
+                si: { name: 'කිරුණු රෝගය', symptoms: 'පළතුරු හඩु වැඩුතාවින්, පතුල සිමිතයි' }
+            }
+        ]
+    },
+    cabbage: {
+        en: { name: 'Cabbage', icon: '🥬' },
+        si: { name: 'ගෝවා', icon: '🥬' },
+        diseases: [
+            {
+                en: { name: 'Black Rot', symptoms: 'Yellow veins, V-shaped yellowing on edges' },
+                si: { name: 'කළු කුණු', symptoms: 'කහ නාඩු, V-හැඩැති කහ පැහැ' }
+            },
+            {
+                en: { name: 'Clubroot', symptoms: 'Swollen distorted roots, yellowing leaves' },
+                si: { name: 'මුල් පිළිබඳ රෝගය', symptoms: 'විෂ්කම්භ වූ විකෘති මුල්, කහ පත්‍ර' }
+            },
+            {
+                en: { name: 'Cabbage Worm', symptoms: 'Green worms in leaves, large holes, frass' },
+                si: { name: 'ගෝවා කෙටුම්', symptoms: 'පත්‍රවල කිරුණු කෙටුම්, විශාල සිදුරු' }
+            }
+        ]
+    },
+    cucumber: {
+        en: { name: 'Cucumber', icon: '🥒' },
+        si: { name: 'පිტිකරු', icon: '🥒' },
+        diseases: [
+            {
+                en: { name: 'Powdery Mildew', symptoms: 'White powder coating on leaves and stems' },
+                si: { name: 'කුඩු පැහැ ශෙනුන්', symptoms: 'පත්‍ර සහ කඩුවල සුදු කුඩු ආවරණය' }
+            },
+            {
+                en: { name: 'Downy Mildew', symptoms: 'Yellow spots above, white mold below leaves' },
+                si: { name: 'ගිලි ශෙනුන්', symptoms: 'ඉහළින් කහ තිබුඩු, පත්‍ර පහළින් සුදු ශෙනුන්' }
+            },
+            {
+                en: { name: 'Anthracnose', symptoms: 'Brown sunken spots on fruits, premature drop' },
+                si: { name: 'ඇන්තෝස්', symptoms: 'ගෙඩිවලට දුඹුරු සිදුරු, අකාල පතනය' }
+            }
+        ]
+    }
+};
+
+// --- ORGANIC FERTILIZERS DATABASE ---
+const organicFertilizers = {
+    en: [
+        { name: 'Neem Oil', benefits: 'Controls fungi, insects, and mites. Natural pesticide alternative.' },
+        { name: 'Compost Tea', benefits: 'Rich in nutrients and beneficial microbes. Improves soil health.' },
+        { name: 'Vermicompost', benefits: 'Slow-release nutrients. Improves soil structure and water retention.' },
+        { name: 'Bone Meal', benefits: 'High in phosphorus. Promotes flowering and fruiting.' },
+        { name: 'Fish Emulsion', benefits: 'Complete nutrient profile. Quick nutrient uptake by plants.' },
+        { name: 'Seaweed Extract', benefits: 'Growth promoter with trace minerals. Boosts immunity.' },
+        { name: 'Cow Manure', benefits: 'Rich in nitrogen. Improves soil fertility over time.' },
+        { name: 'Wood Ash', benefits: 'Potassium source. Repels certain pests naturally.' },
+        { name: 'Crushed Eggshells', benefits: 'Calcium source. Prevents blossom end rot in tomatoes.' },
+        { name: 'Coffee Grounds', benefits: 'Nitrogen and organic matter. Improves soil texture.' },
+        { name: 'Garlic Spray', benefits: 'Natural fungicide and insecticide. Deters many pests.' },
+        { name: 'Mulch (Leaves/Straw)', benefits: 'Retains moisture, controls weeds, adds organic matter.' }
+    ],
+    si: [
+        { name: 'නිම් තෙල්', benefits: 'බිම්බුල්, කෙටුම් සහ එකෝ දෙහි දිරවයි. ස්වාභාවික පිටින්ට එකතු.' },
+        { name: 'කොම්පෝස්ට් තෙ', benefits: 'පෝෂක සහ ප්‍රයෝජනවත් ඉතුරුපිසි සමසතව. පසු සෙබඳතා දෙයි.' },
+        { name: 'වර්මිකොම්පෝස්ට්', benefits: 'සෝම සිට පෝෂක. පසු ව්‍යුහය සහ ජල රඳවාගැනීම දෙයි.' },
+        { name: 'බෝන් ඩුස්ට්', benefits: 'ෆොස්පෝරසින් පුර. ගුල් සහ ඉතුරුපිසි ප්‍රවර්ධනය.' },
+        { name: 'මාළු ඉමුසිතුම්', benefits: 'සම්පූර්ණ පෝෂක පිටිසනроссии. ඉක්මන් පෝෂක ගතිසාර.' },
+        { name: 'මිටි බීජ නිස්සාරණ', benefits: 'වර්ධන දියවඩුවක්. නිම්නතාවය අයිතුන්ගේ ඝටකයි.' },
+        { name: 'ගවේ නිසුදු', benefits: 'නයිට්‍රජන් මිදුයි. පසු සෞභාග්‍ය කාලයක් වින්යාසිතයි.' },
+        { name: 'ලwood තිරුබිම් ගිම්බ්', benefits: 'ක්‍රියාකිරීමේ ලක්ෂ්‍යසිටුවක්. ස්වාභාවිකව ඇතැම් පිටින්ට ප්‍රතිරෝධ.' },
+        { name: 'කුඩු මිටි ශක්තිමත්', benefits: 'කැල්සියම් ඉතුරුපිසි. තක්කාලි පිkenny අවසානයට කුණු නතුර පාලනය.' },
+        { name: 'කෝපි දැඩිය', benefits: 'නයිට්‍රජන් සහ කාබනසිතු කරුණු. පසු ව්‍යුහය දිරවයි.' },
+        { name: 'සුණින් ස්පෙරි', benefits: 'ස්වාභාවික බිම්බුල්යිස සහ කෙටුම් තිරුබිම්. බොහෝ පිටින්ට ශුද්ධ.' },
+        { name: 'මැල්ච් (පත්‍ර/ගල්)', benefits: 'ජල රඳවාගැනීම, කඩතුරු අතිනිසි පාලනය, කාබනසිතු කරුණු එකතු.' }
+    ]
+};
 
 // --- APPLICATION LOGIC ---
 
@@ -452,6 +676,7 @@ const app = {
         floatingFx.init();
         emojiInteraction.init();
         app.startNatureCarousel();
+        careGuide.updateLanguage(app.currentLang);
 
         if (!document.getElementById('view-market').classList.contains('hidden')) {
             const currentMarketName = document.getElementById('detail-market-name').dataset.id;
@@ -1066,3 +1291,171 @@ window.addEventListener("load", () => {
         }
     });
 })();
+
+
+// --- VEGETABLE CARE GUIDE MODULE ---
+const careGuide = {
+    currentLang: 'en',
+    selectedVegetable: null,
+    selectedDisease: null,
+
+    init: () => {
+        careGuide.currentLang = app.currentLang;
+        careGuide.renderVegetableList();
+    },
+
+    renderVegetableList: () => {
+        const list = document.getElementById('vegetable-list');
+        if (!list) return;
+        list.innerHTML = '';
+
+        Object.keys(vegetableCareGuide).forEach(vegKey => {
+            const veg = vegetableCareGuide[vegKey];
+            const vegLang = careGuide.currentLang === 'en' ? veg.en : veg.si;
+            
+            const btn = document.createElement('button');
+            btn.className = 'veg-list-item';
+            btn.innerHTML = `
+                <span class="icon">${vegLang.icon}</span>
+                <span>${vegLang.name}</span>
+            `;
+            btn.onclick = () => careGuide.selectVegetable(vegKey);
+            list.appendChild(btn);
+        });
+    },
+
+    selectVegetable: (vegKey) => {
+        careGuide.selectedVegetable = vegKey;
+        careGuide.selectedDisease = null;
+
+        // Update active state
+        document.querySelectorAll('.veg-list-item').forEach((btn, idx) => {
+            btn.classList.toggle('active', Object.keys(vegetableCareGuide)[idx] === vegKey);
+        });
+
+        // Show diseases
+        careGuide.renderDiseases();
+        
+        // Hide empty state and show detail view
+        document.getElementById('care-empty-state').classList.add('hidden');
+        document.getElementById('care-detail-view').classList.remove('hidden');
+        document.getElementById('disease-details').classList.add('hidden');
+        
+        // Close disease details
+        careGuide.closeDiseaseDetail();
+    },
+
+    renderDiseases: () => {
+        if (!careGuide.selectedVegetable) return;
+
+        const veg = vegetableCareGuide[careGuide.selectedVegetable];
+        const vegLang = careGuide.currentLang === 'en' ? veg.en : veg.si;
+        
+        // Update vegetable header
+        document.getElementById('selected-veg-icon').textContent = vegLang.icon;
+        document.getElementById('selected-veg-name').textContent = vegLang.name;
+
+        // Render diseases
+        const diseasesList = document.getElementById('diseases-list');
+        diseasesList.innerHTML = '';
+
+        veg.diseases.forEach((disease, idx) => {
+            const diseaseLang = careGuide.currentLang === 'en' ? disease.en : disease.si;
+            
+            const card = document.createElement('div');
+            card.className = 'disease-card';
+            card.innerHTML = `
+                <div class="disease-card-title">${diseaseLang.name}</div>
+                <div class="disease-card-symptom">${diseaseLang.symptoms.substring(0, 50)}...</div>
+            `;
+            card.onclick = () => careGuide.selectDisease(idx);
+            diseasesList.appendChild(card);
+        });
+
+        // Render fertilizers
+        careGuide.renderFertilizers();
+    },
+
+    selectDisease: (diseaseIdx) => {
+        if (!careGuide.selectedVegetable) return;
+
+        careGuide.selectedDisease = diseaseIdx;
+        const veg = vegetableCareGuide[careGuide.selectedVegetable];
+        const disease = veg.diseases[diseaseIdx];
+        const diseaseLang = careGuide.currentLang === 'en' ? disease.en : disease.si;
+
+        // Update detail view
+        document.getElementById('disease-name').textContent = diseaseLang.name;
+        document.getElementById('disease-symptoms').textContent = diseaseLang.symptoms;
+
+        // Update active disease card
+        document.querySelectorAll('.disease-card').forEach((card, idx) => {
+            card.classList.toggle('active', idx === diseaseIdx);
+        });
+
+        // Show disease details
+        document.getElementById('disease-details').classList.remove('hidden');
+
+        // Add treatment methods (generic for now)
+        const treatmentList = document.getElementById('treatment-list');
+        const treatments = [
+            careGuide.currentLang === 'en' 
+                ? '✓ Remove affected leaves and dispose safely' 
+                : '✓ ගිනි ඇති පත්‍ර ඉවත් කරන්න',
+            careGuide.currentLang === 'en' 
+                ? '✓ Improve air circulation around plants' 
+                : '✓ කුඩුවල වටා වාතය සිරුර දියවඩුවක්',
+            careGuide.currentLang === 'en' 
+                ? '✓ Use organic fungicide spray (Neem oil, Sulfur)' 
+                : '✓ කාබනිකව පෝෂිත ශෙනුන්-නැතුවම ස්ප්‍රේ එක්',
+            careGuide.currentLang === 'en' 
+                ? '✓ Water at the base, avoid wetting leaves' 
+                : '✓ පතුල හිමින් ජලය දෙන්න, පත්‍ර තෙතයට නොයන්න',
+            careGuide.currentLang === 'en' 
+                ? '✓ Apply organic compost for plant immunity' 
+                : '✓ කුඩුවල ශක්තිය සඳහා කොම්පෝස්ට් යෙදවන්න'
+        ];
+        treatmentList.innerHTML = treatments.map(t => `<li>${t}</li>`).join('');
+    },
+
+    renderFertilizers: () => {
+        const fertilizersList = document.getElementById('fertilizers-list');
+        fertilizersList.innerHTML = '';
+
+        const fertilizers = careGuide.currentLang === 'en' 
+            ? organicFertilizers.en 
+            : organicFertilizers.si;
+
+        fertilizers.forEach(fert => {
+            const card = document.createElement('div');
+            card.className = 'fertilizer-card';
+            card.innerHTML = `
+                <div class="fertilizer-title">🌱 ${fert.name}</div>
+                <div class="fertilizer-benefits">${fert.benefits}</div>
+            `;
+            fertilizersList.appendChild(card);
+        });
+    },
+
+    closeDiseaseDetail: () => {
+        careGuide.selectedDisease = null;
+        document.getElementById('disease-details').classList.add('hidden');
+        document.querySelectorAll('.disease-card').forEach(card => {
+            card.classList.remove('active');
+        });
+    },
+
+    updateLanguage: (lang) => {
+        careGuide.currentLang = lang;
+        if (careGuide.selectedVegetable) {
+            careGuide.renderDiseases();
+        } else {
+            careGuide.renderVegetableList();
+        }
+    }
+};
+
+// Initialize care guide when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    careGuide.init();
+});
