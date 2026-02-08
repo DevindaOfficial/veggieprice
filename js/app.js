@@ -303,6 +303,8 @@ const translations = {
         recommended_fertilizers: "නිර්දේශිත කාබනිකව පෝෂිත ගස්",
         prevention_tips: "වැළැක්වීමේ ඉඟි",
         treatment_methods: "ප්‍රතිකාර ක්‍රම"
+    }
+};
 
 const natureAdvice = {
     en: ["Reduce plastic usage in markets.", "Support organic farming practices.", "Keep our water sources clean.", "Minimize food waste.", "Plant a tree for every harvest."],
@@ -1458,8 +1460,3 @@ const careGuide = {
         }
     }
 };
-
-// Initialize care guide when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    careGuide.init();
-});
