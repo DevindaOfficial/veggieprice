@@ -363,7 +363,7 @@ body.lang-si .text-xs {
 i.fa-solid:not(.fa-carrot),
 i.fa-regular,
 i.fa-brands {
-    color: #c0ffd7 !important;
+    color: #0d4e24 !important;
     /* green-700 */
 }
 
@@ -673,6 +673,27 @@ i.fa-brands {
 .market-card {
     will-change: transform;
     backface-visibility: hidden;
+}
+
+/* Market Card Drag & Drop Styles */
+.market-card.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dragging-ghost {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 10px 25px rgba(16, 185, 129, 0.15);
+    border-radius: 1rem;
+    transform: scale(1.05) rotate(2deg);
+    opacity: 1;
+    transition: none;
+    width: auto;
+    max-width: 85vw;
 }
 
 /* Performance: Reduce animations on low-end devices */
