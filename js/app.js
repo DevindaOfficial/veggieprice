@@ -103,6 +103,7 @@ const translations = {
     en: {
         nav_home: "Home",
         nav_markets: "Markets",
+        nav_agri_guide: "Agri Guide",
         nav_about: "About",
         hero_title: "Daily Wholesale Vegetable Prices",
         site_title: "VeggiePrice - Sri Lankan Wholesale Market Prices",
@@ -190,6 +191,7 @@ const translations = {
         item_LeafyGreens: "Leafy Greens",
 
         // Vegetable Care Guide
+        nav_agri_guide: "Agri Guide",
         care_guide_title: "Vegetable Care Guide",
         care_guide_subtitle: "Learn about common diseases, symptoms, and organic fertilizers for healthy vegetables",
         select_vegetable: "Select a Vegetable",
@@ -206,6 +208,7 @@ const translations = {
     si: {
         nav_home: "මුල් පිටුව",
         nav_markets: "වෙළඳපොල",
+        nav_agri_guide: "ගොවිතැන් මාරුතා",
         nav_about: "අප ගැන",
         hero_title: "අද එළවළු තොග මිල",
         site_title: "VeggiePrice - ශ්‍රී ලංකා තොග මිල",
@@ -578,6 +581,7 @@ const app = {
         emojiInteraction.init(); emojiController.init();
         app.updateTranslations();
         app.startNatureCarousel();
+        careGuide.init();
 
         // Add Scroll Saver for Refresh
         window.addEventListener('beforeunload', () => {

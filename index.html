@@ -110,6 +110,8 @@
                         data-i18n="nav_home">Home</button>
                     <button onclick="app.scrollToSection('markets')" class="hover:text-green-600 transition"
                         data-i18n="nav_markets">Markets</button>
+                    <button onclick="app.scrollToSection('care-guide')" class="hover:text-green-600 transition"
+                        data-i18n="nav_agri_guide">Agri Guide</button>
                     <button onclick="app.toggleAbout()" class="hover:text-green-600 transition"
                         data-i18n="nav_about">About</button>
                     <button id="emoji-toggle-nav-btn" aria-pressed="true" title="Emoji fun"
@@ -759,6 +761,13 @@
             class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-green-700 active:text-green-700 transition group focus:outline-none">
             <i class="fa-solid fa-store text-lg mb-1 group-hover:scale-110 transition-transform"></i>
             <span class="text-[10px] font-medium" data-i18n="nav_markets">Markets</span>
+        </button>
+
+        <!-- Agri Guide -->
+        <button onclick="app.scrollToSection('care-guide')"
+            class="flex flex-col items-center justify-center w-full h-full text-gray-500 hover:text-green-600 active:text-green-600 transition group focus:outline-none">
+            <i class="fa-solid fa-leaf text-lg mb-1 group-hover:scale-110 transition-transform"></i>
+            <span class="text-[10px] font-medium" data-i18n="nav_agri_guide">Agri Guide</span>
         </button>
 
         <!-- Emoji/Fun (Central Highlight) -->
