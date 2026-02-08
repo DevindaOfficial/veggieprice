@@ -315,7 +315,6 @@ const app = {
     init: () => {
         app.generateDemoData();
         app.renderMarkets();
-        dragAndDropManager.init();
 
         // --- 1. Load Saved View State ---
         const savedState = sessionStorage.getItem('vp_view_state');
@@ -450,7 +449,6 @@ const app = {
 
         app.updateTranslations();
         app.renderMarkets();
-        dragAndDropManager.init();
         floatingFx.init();
         emojiInteraction.init();
         app.startNatureCarousel();
@@ -581,7 +579,7 @@ const app = {
             const icon = marketIcons[m.id] || marketIcons['dambulla'];
 
             return `
-                    <div data-market-id="${m.id}" onclick="app.showMarket('${m.id}')" onkeydown="if(event.key==='Enter') app.showMarket('${m.id}')" role="button" tabindex="0" aria-label="${btnText} - ${name}" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-full md:h-[420px] flex flex-col w-full touch-manipulation">
+                    <div onclick="app.showMarket('${m.id}')" onkeydown="if(event.key==='Enter') app.showMarket('${m.id}')" role="button" tabindex="0" aria-label="${btnText} - ${name}" class="group relative bg-white rounded-2xl md:rounded-3xl overflow-hidden border border-gray-100 shadow-none cursor-pointer transition transform duration-300 hover:scale-105 hover:shadow-2xl market-card h-full md:h-[420px] flex flex-col w-full">
                 <div class="h-32 md:h-56 overflow-hidden flex items-center justify-center bg-gradient-to-br from-green-50 via-emerald-25 to-green-50 relative">
                     <div class="w-20 h-20 md:w-28 md:h-28 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                         ${icon}
@@ -990,158 +988,6 @@ const emojiController = {
 };
 
 // Market Card Drag & Drop Controller (Mobile Reordering)
-const dragAndDropManager = {
-    draggedElement: null,
-    ghostElement: null,
-    offsetX: 0,
-    offsetY: 0,
-    grid: null,
-    storageName: 'vp_market_order',
-
-    init() {
-        this.grid = document.getElementById('market-grid');
-        if (!this.grid) return;
-
-        // Only enable on mobile (touch devices)
-        if (window.innerWidth > 768) return;
-
-        const cards = this.grid.querySelectorAll('.market-card');
-        cards.forEach(card => {
-            card.addEventListener('touchstart', (e) => this.onTouchStart(e, card), { passive: false });
-            card.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: false });
-            card.addEventListener('touchend', (e) => this.onTouchEnd(e), { passive: false });
-        });
-
-        // Restore saved order
-        this.restoreSavedOrder();
-    },
-
-    onTouchStart(e, card) {
-        // Only start drag if not clicking the button
-        if (e.target.closest('button')) return;
-
-        this.draggedElement = card;
-        const touch = e.touches[0];
-        const rect = card.getBoundingClientRect();
-
-        this.offsetX = touch.clientX - rect.left;
-        this.offsetY = touch.clientY - rect.top;
-
-        // Create ghost element
-        this.ghostElement = card.cloneNode(true);
-        this.ghostElement.classList.add('dragging-ghost');
-        document.body.appendChild(this.ghostElement);
-
-        // Add dragging class
-        card.classList.add('dragging');
-
-        // Set initial position
-        this.ghostElement.style.left = `${touch.clientX - this.offsetX}px`;
-        this.ghostElement.style.top = `${touch.clientY - this.offsetY}px`;
-    },
-
-    onTouchMove(e) {
-        if (!this.draggedElement || !this.ghostElement) return;
-
-        e.preventDefault();
-        const touch = e.touches[0];
-
-        // Update ghost position
-        this.ghostElement.style.left = `${touch.clientX - this.offsetX}px`;
-        this.ghostElement.style.top = `${touch.clientY - this.offsetY}px`;
-
-        // Find which card is below the ghost (for visual reordering preview)
-        const allCards = Array.from(this.grid.querySelectorAll('.market-card'));
-        const touchPoint = {
-            x: touch.clientX,
-            y: touch.clientY
-        };
-
-        for (let card of allCards) {
-            if (card === this.draggedElement) continue;
-
-            const rect = card.getBoundingClientRect();
-            if (touchPoint.x > rect.left && touchPoint.x < rect.right &&
-                touchPoint.y > rect.top && touchPoint.y < rect.bottom) {
-
-                // Swap in grid
-                const allCardsInGrid = Array.from(this.grid.children);
-                const draggedIndex = allCardsInGrid.indexOf(this.draggedElement);
-                const targetIndex = allCardsInGrid.indexOf(card);
-
-                if (draggedIndex < targetIndex) {
-                    this.draggedElement.parentNode.insertBefore(this.draggedElement, card.nextSibling);
-                } else {
-                    this.draggedElement.parentNode.insertBefore(this.draggedElement, card);
-                }
-
-                break;
-            }
-        }
-    },
-
-    onTouchEnd(e) {
-        if (!this.draggedElement) return;
-
-        // Remove dragging class
-        this.draggedElement.classList.remove('dragging');
-
-        // Remove ghost
-        if (this.ghostElement) {
-            this.ghostElement.remove();
-            this.ghostElement = null;
-        }
-
-        // Save new order
-        this.saveOrder();
-        this.draggedElement = null;
-    },
-
-    saveOrder() {
-        const cards = this.grid.querySelectorAll('[data-market-id]');
-        const order = Array.from(cards).map(card => card.dataset.marketId);
-        localStorage.setItem(this.storageName, JSON.stringify(order));
-    },
-
-    restoreSavedOrder() {
-        const savedOrder = localStorage.getItem(this.storageName);
-        if (!savedOrder) return;
-
-        try {
-            const order = JSON.parse(savedOrder);
-            const cardsMap = {};
-            const cards = this.grid.querySelectorAll('[data-market-id]');
-
-            // Create a map of cards
-            cards.forEach(card => {
-                cardsMap[card.dataset.marketId] = card.cloneNode(true);
-            });
-
-            // Clear grid
-            this.grid.innerHTML = '';
-
-            // Reinsert in saved order
-            order.forEach(marketId => {
-                if (cardsMap[marketId]) {
-                    this.grid.appendChild(cardsMap[marketId]);
-                }
-            });
-
-            // Add any new cards that weren't in saved order
-            cards.forEach(card => {
-                if (!order.includes(card.dataset.marketId)) {
-                    this.grid.appendChild(cardsMap[card.dataset.marketId]);
-                }
-            });
-
-            // Re-attach event listeners after reordering
-            this.init();
-        } catch (e) {
-            console.warn('Failed to restore market order:', e);
-        }
-    }
-};
-
 document.addEventListener('DOMContentLoaded', app.init);
 
 window.addEventListener("load", () => {
